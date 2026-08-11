@@ -26,3 +26,30 @@ if (heroVideo) {
   heroVideo.addEventListener('loadeddata', tryPlay);
   document.addEventListener('click', tryPlay, { once: true });
 }
+
+const header = document.querySelector('header');
+let lastScrollY = window.scrollY;
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y > lastScrollY && y > 80 && !nav.classList.contains('-translate-y-[130%]')) {
+    header.classList.add('header-hidden');
+  } else {
+    header.classList.remove('header-hidden');
+  }
+  lastScrollY = y;
+}, { passive: true });
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+
+document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
