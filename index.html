@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IKfTech — Innovative Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Changa+One&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: "#2563EB",
+            brand2: "#0014FF",
+          },
+          fontFamily: {
+            logo: ["'Changa One'", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    .nav-link { transition: color .2s ease, background-color .2s ease; }
+    .nav-link:hover { color: #2563EB; background-color: rgba(134, 156, 202, 0.08); }
+    .nav-link::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      margin-top: 1px;
+      background: #2563EB;
+      border-radius: 2px;
+      transition: width .3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .btn-cta {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #2563EB, #1d4ed8, #2563EB);
+      background-size: 200% 200%;
+      animation: gradientShift 4s ease infinite;
+      box-shadow: 0 8px 24px -6px rgba(37, 99, 235, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .btn-cta::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -80%;
+      width: 55%;
+      height: 100%;
+      background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: skewX(-20deg);
+      animation: shine 3.2s ease infinite;
+    }
+    @keyframes shine {
+      0% { left: -80%; }
+      60%, 100% { left: 140%; }
+    }
+    .btn-cta:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 16px 36px -8px rgba(37, 99, 235, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+    }
+    .btn-cta .arrow { transition: transform .25s ease; }
+    .btn-cta:hover .arrow { transform: translateX(5px); }
+  </style>
+</head>
+<body class="bg-white text-[#0F172A] font-sans antialiased">
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-md">
+    <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4">
+
+      <a href="#" class="flex items-center text-xl tracking-wide" aria-label="IKfTech home">
+        <span class="font-logo text-4xl font-normal text-brand">IKfTech</span>
+      </a>
+
+      <nav id="mainNav" class="fixed inset-x-0 top-16 -translate-y-[130%] border-b border-slate-200 bg-white p-4 transition-transform duration-300 lg:static lg:translate-y-0 lg:border-0 lg:bg-transparent lg:p-0 lg:transition-none" aria-label="Main navigation">
+        <ul class="flex flex-col items-stretch gap-1 lg:mt-2 lg:flex-row lg:items-center">
+          <li><a href="#services" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Services</a></li>
+          <li><a href="#consultancy" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Consultancy</a></li>
+          <li><a href="#company" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Company</a></li>
+          <li><a href="#portfolio" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Portfolio</a></li>
+          <li><a href="#resources" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Resources</a></li>
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="btn-cta hidden items-center gap-2 rounded-full px-6 py-2.5 text-base font-semibold text-white lg:inline-flex">
+          Let's Connect
+          <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <button id="navToggle" class="flex flex-col gap-[5px] p-2 lg:hidden" aria-label="Toggle menu" aria-expanded="false">
+          <span class="h-[2px] w-6 rounded bg-slate-900 transition-transform duration-300"></span>
+          <span class="h-[2px] w-6 rounded bg-slate-900 transition-opacity duration-300"></span>
+          <span class="h-[2px] w-6 rounded bg-slate-900 transition-transform duration-300"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative flex min-h-[80vh] items-center overflow-hidden bg-slate-900">
+      <video id="heroVideo" class="absolute inset-0 h-full w-full object-cover" autoplay muted loop playsinline preload="auto" poster="https://images.pexels.com/videos/34147393/abstract-blue-liquid-waves-background-34147393.jpg">
+        <source src="https://videos.pexels.com/video-files/34147393/14478055_1280_720_30fps.mp4" type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-slate-950/60"></div>
+
+      <div class="relative mx-auto w-full max-w-4xl px-6 py-24 text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur-sm">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-sky-400"></span>
+          </span>
+          Innovative IT Solutions
+        </span>
+
+        <h1 class="mt-6 text-5xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-6xl lg:text-7xl">
+          We build digital products that
+          <span class="bg-gradient-to-r from-sky-300 to-blue-500 bg-clip-text text-transparent">move businesses forward.</span>
+        </h1>
+
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-200 sm:text-xl">
+          From strategy and consultancy to full-scale development — IKfTech turns ambitious ideas into reliable, scalable software.
+        </p>
+
+        <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <a href="#contact" class="btn-cta inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-base font-semibold text-white">
+            Let's Connect
+            <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#portfolio" class="rounded-full border-2 border-white/50 px-7 py-3 text-base font-semibold text-white transition-all duration-300 hover:border-white hover:bg-white/10">
+            View Our Work
+          </a>
+        </div>
+
+        <div class="mt-14 grid grid-cols-2 gap-6 border-t border-white/20 pt-8 sm:grid-cols-4">
+          <div>
+            <p class="text-3xl font-extrabold text-white sm:text-4xl">120+</p>
+            <p class="mt-1 text-sm font-medium text-slate-300">Projects Delivered</p>
+          </div>
+          <div>
+            <p class="text-3xl font-extrabold text-white sm:text-4xl">80+</p>
+            <p class="mt-1 text-sm font-medium text-slate-300">Happy Clients</p>
+          </div>
+          <div>
+            <p class="text-3xl font-extrabold text-white sm:text-4xl">10+</p>
+            <p class="mt-1 text-sm font-medium text-slate-300">Years of Experience</p>
+          </div>
+          <div>
+            <p class="text-3xl font-extrabold text-white sm:text-4xl">24/7</p>
+            <p class="mt-1 text-sm font-medium text-slate-300">Support Available</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
