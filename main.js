@@ -21,10 +21,13 @@ document.querySelectorAll('#mainNav a').forEach((link) => {
 
 const heroVideo = document.getElementById('heroVideo');
 if (heroVideo) {
+  heroVideo.muted = true;
+  heroVideo.playsInline = true;
+  heroVideo.setAttribute('muted', '');
   const tryPlay = () => heroVideo.play().catch(() => {});
   tryPlay();
-  heroVideo.addEventListener('loadeddata', tryPlay);
-  document.addEventListener('click', tryPlay, { once: true });
+  ['loadeddata', 'canplay', 'canplaythrough'].forEach((evt) => heroVideo.addEventListener(evt, tryPlay));
+  ['click', 'touchstart', 'scroll'].forEach((evt) => document.addEventListener(evt, tryPlay, { once: true, passive: true }));
 }
 
 const header = document.querySelector('header');
