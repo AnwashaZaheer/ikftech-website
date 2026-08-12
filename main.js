@@ -40,7 +40,8 @@ let lastScrollY = window.scrollY;
 
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
-  if (y > lastScrollY && y > 80 && !nav.classList.contains('-translate-y-[130%]')) {
+  const anyMegaOpen = document.querySelector('.mega-menu.open');
+  if (y > lastScrollY && y > 80 && !nav.classList.contains('-translate-y-[130%]') && !anyMegaOpen) {
     header.classList.add('header-hidden');
   } else {
     header.classList.remove('header-hidden');
@@ -91,20 +92,19 @@ if (megaMenus.length) {
     let menuTimer;
 
     const open = () => {
+      if (!desktopHover.matches) return;
       clearTimeout(menuTimer);
       setMegaMenu(menu, true);
     };
     const close = () => {
-      menuTimer = setTimeout(() => setMegaMenu(menu, false), 120);
+      if (!desktopHover.matches) return;
+      menuTimer = setTimeout(() => setMegaMenu(menu, false), 250);
     };
 
-    // Desktop: open/close on hover
-    if (desktopHover.matches) {
-      btn.addEventListener('mouseenter', open);
-      btn.addEventListener('mouseleave', close);
-      menu.addEventListener('mouseenter', open);
-      menu.addEventListener('mouseleave', close);
-    }
+    btn.addEventListener('mouseenter', open);
+    btn.addEventListener('mouseleave', close);
+    menu.addEventListener('mouseenter', open);
+    menu.addEventListener('mouseleave', close);
 
     // Mobile/desktop: toggle on click
     btn.addEventListener('click', () => {
