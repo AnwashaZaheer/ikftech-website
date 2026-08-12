@@ -64,10 +64,13 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-// ===== Services mega menu =====
+// ===== Mega menus =====
+const companyMenu = document.getElementById('companyMenu');
+
 const megaMenus = [
   { btn: document.getElementById('servicesBtn'), menu: document.getElementById('megaMenu') },
   { btn: document.getElementById('consultancyBtn'), menu: document.getElementById('consultancyMenu') },
+  { btn: document.getElementById('companyBtn'), menu: companyMenu },
 ].filter((m) => m.btn && m.menu);
 
 const setMegaMenu = (target, open) => {
@@ -77,6 +80,12 @@ const setMegaMenu = (target, open) => {
     btn.setAttribute('aria-expanded', String(isTarget && open));
     menu.setAttribute('aria-hidden', String(!(isTarget && open)));
   });
+  if (!open && target === companyMenu && companyMenu) {
+    companyMenu.querySelectorAll('.company-preview').forEach((pane) => {
+      pane.classList.toggle('active', pane.dataset.pane === 'default');
+    });
+    companyMenu.querySelectorAll('.company-item').forEach((item) => item.classList.remove('active'));
+  }
   if (open && !nav.classList.contains('-translate-y-[130%]')) {
     nav.classList.add('-translate-y-[130%]');
     toggle.setAttribute('aria-expanded', 'false');
@@ -119,4 +128,23 @@ if (megaMenus.length) {
     const insideMenu = megaMenus.some(({ btn, menu }) => btn.contains(e.target) || menu.contains(e.target));
     if (!insideMenu) closeAllMegaMenus();
   });
+
+  // ===== Company mega menu: interactive left-nav / right-preview =====
+  if (companyMenu) {
+    const companyItems = companyMenu.querySelectorAll('.company-item');
+    const previewPanes = companyMenu.querySelectorAll('.company-preview');
+
+    const setCompanyPreview = (id) => {
+      previewPanes.forEach((pane) => pane.classList.toggle('active', pane.dataset.pane === id));
+      companyItems.forEach((item) => item.classList.toggle('active', item.dataset.preview === id));
+    };
+
+    companyItems.forEach((item) => {
+      item.addEventListener('mouseenter', () => setCompanyPreview(item.dataset.preview));
+      item.addEventListener('focus', () => setCompanyPreview(item.dataset.preview));
+      item.addEventListener('click', () => setCompanyPreview(item.dataset.preview));
+    });
+
+    companyMenu.addEventListener('mouseleave', () => setCompanyPreview('default'));
+  }
 }

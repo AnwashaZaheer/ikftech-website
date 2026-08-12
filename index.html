@@ -111,6 +111,34 @@
     #consultancyMenu .mega-link { font-size: 13px; }
     #consultancyMenu .mega-col-title { font-size: 13.5px; }
 
+    /* ---- Company mega menu: interactive left-nav / right-preview ---- */
+    #companyMenu .company-item { transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    #companyMenu .company-item.active {
+      background-color: #eef5ff;
+      border-color: #bfdbfe;
+      box-shadow: 0 8px 24px -12px rgba(37, 99, 235, 0.35);
+    }
+    #companyMenu .company-item.active .company-ico { background-color: #2563EB; color: #fff; box-shadow: 0 8px 20px -8px rgba(37, 99, 235, 0.7); }
+    #companyMenu .company-item.active .company-ico svg { transform: scale(1.05); }
+    #companyMenu .company-ico { transition: background-color .25s ease, color .25s ease, box-shadow .25s ease, transform .25s ease; }
+    #companyMenu .company-ico svg { transition: transform .25s ease; }
+
+    #companyMenu .company-preview {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: opacity .35s ease, transform .35s ease, visibility .35s ease;
+    }
+    #companyMenu .company-preview.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    #companyMenu .company-preview-graphic { transition: transform .6s ease; }
+    #companyMenu .company-preview.active .company-preview-graphic { transform: scale(1); }
+
     /* ---- Mobile: touch-friendly tap targets inside the dropdowns ---- */
     @media (max-width: 1023px) {
       .mega-link { padding: 4px 0; }
@@ -159,7 +187,15 @@
               <span class="mm-underline absolute inset-x-3.5 bottom-0 h-0.5 rounded-full bg-brand opacity-0"></span>
             </button>
           </li>
-          <li><a href="#company" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Company</a></li>
+          <li class="relative">
+            <button id="companyBtn" class="mm-trigger relative flex items-center gap-1.5 rounded-lg px-3.5 py-1 text-base font-medium text-slate-600 transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="companyMenu">
+              Company
+              <svg class="chevron h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+              <span class="mm-underline absolute inset-x-3.5 bottom-0 h-0.5 rounded-full bg-brand opacity-0"></span>
+            </button>
+          </li>
           <li><a href="#portfolio" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Portfolio</a></li>
           <li><a href="#resources" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Resources</a></li>
           <li class="mt-2 lg:hidden">
@@ -465,6 +501,177 @@
                 </div>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== COMPANY MEGA MENU (interactive left-nav / right-preview) ===== -->
+    <div id="companyMenu" class="mega-menu absolute inset-x-0 top-full z-50 px-4 pb-8 pt-3" aria-hidden="true">
+      <div class="relative mx-auto max-h-[calc(100vh-88px)] w-full max-w-7xl overflow-hidden overflow-y-auto rounded-3xl border border-sky-200 bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35),0_0_30px_-5px_rgba(37,99,235,0.25)] lg:overflow-visible">
+        <!-- Subtle blue glow waves around the edges -->
+        <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl" aria-hidden="true">
+          <div class="absolute -left-24 top-6 h-64 w-64 rounded-full bg-sky-200/40 blur-3xl"></div>
+          <div class="absolute -right-20 -bottom-16 h-64 w-64 rounded-full bg-brand/10 blur-3xl"></div>
+        </div>
+
+        <div class="relative grid lg:min-h-[560px] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+
+          <!-- LEFT: company sections -->
+          <div class="flex flex-col border-b border-slate-100 p-6 sm:p-8 lg:border-b-0 lg:border-r lg:p-10">
+            <div class="flex items-center gap-2.5">
+              <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-100 text-brand">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M15 9h4a2 2 0 0 1 2 2v10M9 7h2M9 11h2M9 15h2"/>
+                </svg>
+              </span>
+              <span class="text-[11px] font-bold uppercase tracking-[0.28em] text-slate-500">Company</span>
+            </div>
+            <div class="mt-5 h-px w-full bg-gradient-to-r from-sky-200 to-transparent"></div>
+
+            <ul class="mt-6 space-y-3">
+              <!-- AI-First Company (featured) -->
+              <li>
+                <button type="button" data-preview="ai" class="company-item group flex w-full items-start gap-4 rounded-2xl border border-sky-100 bg-sky-50/70 p-4 text-left">
+                  <span class="company-ico flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-brand">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="4"/>
+                    </svg>
+                  </span>
+                  <span class="flex-1">
+                    <span class="flex flex-wrap items-center gap-2 text-[15px] font-bold text-slate-900">
+                      AI-First Company
+                      <span class="rounded-full bg-brand px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">New</span>
+                    </span>
+                    <span class="mt-1 block text-[13px] leading-snug text-slate-500">Our approach to building intelligent, scalable solutions</span>
+                  </span>
+                </button>
+              </li>
+              <!-- About Us -->
+              <li>
+                <button type="button" data-preview="about" class="company-item group flex w-full items-start gap-4 rounded-2xl border border-transparent p-4 text-left">
+                  <span class="company-ico flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-brand">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                  </span>
+                  <span class="flex-1">
+                    <span class="block text-[15px] font-bold text-slate-900">About Us</span>
+                    <span class="mt-1 block text-[13px] leading-snug text-slate-500">Who we are, our mission, and how we make a difference</span>
+                  </span>
+                </button>
+              </li>
+              <!-- How We Work -->
+              <li>
+                <button type="button" data-preview="work" class="company-item group flex w-full items-start gap-4 rounded-2xl border border-transparent p-4 text-left">
+                  <span class="company-ico flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-brand">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="5" cy="6" r="3"/><circle cx="19" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M7.5 7.5 10.5 15.5M16.5 7.5 13.5 15.5"/>
+                    </svg>
+                  </span>
+                  <span class="flex-1">
+                    <span class="block text-[15px] font-bold text-slate-900">How We Work</span>
+                    <span class="mt-1 block text-[13px] leading-snug text-slate-500">Our methodology for delivering reliable, future-proof technology</span>
+                  </span>
+                </button>
+              </li>
+              <!-- Careers -->
+              <li>
+                <button type="button" data-preview="careers" class="company-item group flex w-full items-start gap-4 rounded-2xl border border-transparent p-4 text-left">
+                  <span class="company-ico flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-brand">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                    </svg>
+                  </span>
+                  <span class="flex-1">
+                    <span class="block text-[15px] font-bold text-slate-900">Careers</span>
+                    <span class="mt-1 block text-[13px] leading-snug text-slate-500">Join our growing team and explore opportunities across technology, design, and more</span>
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- RIGHT: interactive preview -->
+          <div class="relative min-h-[340px] overflow-hidden p-6 sm:p-8 lg:min-h-0 lg:p-10">
+            <div class="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-sky-50 via-white to-sky-50" aria-hidden="true"></div>
+            <div class="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full bg-brand/10 blur-3xl" aria-hidden="true"></div>
+            <div class="pointer-events-none absolute -bottom-14 -left-10 h-52 w-52 rounded-full bg-sky-200/60 blur-3xl" aria-hidden="true"></div>
+
+            <!-- Default preview -->
+            <div data-pane="default" class="company-preview active flex flex-col items-center justify-center text-center">
+              <div class="company-preview-graphic relative w-full max-w-sm overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Abstract technology" class="h-56 w-full object-cover sm:h-64" loading="lazy" onerror="this.style.display='none'">
+                <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
+                <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>
+                  </svg>
+                </span>
+              </div>
+              <h4 class="mt-6 text-xl font-extrabold text-slate-900">Explore IKfTech</h4>
+              <p class="mt-2 max-w-xs text-sm leading-relaxed text-slate-500">Hover over a company section to discover more.</p>
+            </div>
+
+            <!-- AI-First preview -->
+            <div data-pane="ai" class="company-preview flex flex-col items-center justify-center text-center">
+              <div class="company-preview-graphic relative w-full max-w-sm overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="AI-First Innovation" class="h-56 w-full object-cover sm:h-64" loading="lazy" onerror="this.style.display='none'">
+                <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
+                <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>
+                  </svg>
+                </span>
+              </div>
+              <h4 class="mt-6 text-xl font-extrabold text-slate-900">AI-First Innovation</h4>
+              <p class="mt-2 max-w-xs text-sm leading-relaxed text-slate-500">Intelligent, scalable solutions with AI at the core of everything we build.</p>
+            </div>
+
+            <!-- About Us preview -->
+            <div data-pane="about" class="company-preview flex flex-col items-center justify-center text-center">
+              <div class="company-preview-graphic relative w-full max-w-sm overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Who We Are" class="h-56 w-full object-cover sm:h-64" loading="lazy" onerror="this.style.display='none'">
+                <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
+                <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>
+                  </svg>
+                </span>
+              </div>
+              <h4 class="mt-6 text-xl font-extrabold text-slate-900">Who We Are</h4>
+              <p class="mt-2 max-w-xs text-sm leading-relaxed text-slate-500">A team of engineers, designers, and strategists turning bold ideas into dependable software.</p>
+            </div>
+
+            <!-- How We Work preview -->
+            <div data-pane="work" class="company-preview flex flex-col items-center justify-center text-center">
+              <div class="company-preview-graphic relative w-full max-w-sm overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Our Process" class="h-56 w-full object-cover sm:h-64" loading="lazy" onerror="this.style.display='none'">
+                <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
+                <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>
+                  </svg>
+                </span>
+              </div>
+              <h4 class="mt-6 text-xl font-extrabold text-slate-900">Our Process</h4>
+              <p class="mt-2 max-w-xs text-sm leading-relaxed text-slate-500">A proven, transparent methodology that delivers reliable, future-proof technology.</p>
+            </div>
+
+            <!-- Careers preview -->
+            <div data-pane="careers" class="company-preview flex flex-col items-center justify-center text-center">
+              <div class="company-preview-graphic relative w-full max-w-sm overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Build Your Future With Us" class="h-56 w-full object-cover sm:h-64" loading="lazy" onerror="this.style.display='none'">
+                <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
+                <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>
+                  </svg>
+                </span>
+              </div>
+              <h4 class="mt-6 text-xl font-extrabold text-slate-900">Build Your Future With Us</h4>
+              <p class="mt-2 max-w-xs text-sm leading-relaxed text-slate-500">Explore roles across technology, design, and more — and grow with IKfTech.</p>
+            </div>
           </div>
         </div>
       </div>
