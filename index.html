@@ -91,14 +91,14 @@
       pointer-events: auto;
     }
 
-    /* ---- Services button: chevron + underline only on hover/open ---- */
-    #servicesBtn .chevron { transition: transform .3s ease; }
-    #servicesBtn[aria-expanded="true"] .chevron { transform: rotate(180deg); }
-    #servicesBtn:hover { color: #2563EB; }
-    #servicesBtn[aria-expanded="true"] { color: #2563EB; }
-    .services-underline { transition: opacity .2s ease; }
-    #servicesBtn:hover .services-underline,
-    #servicesBtn[aria-expanded="true"] .services-underline { opacity: 1; }
+    /* ---- Mega menu triggers (Services / Consultancy): chevron + underline only on hover/open ---- */
+    .mm-trigger:hover { color: #2563EB; }
+    .mm-trigger[aria-expanded="true"] { color: #2563EB; }
+    .mm-trigger .chevron { transition: transform .3s ease; }
+    .mm-trigger[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+    .mm-underline { transition: opacity .2s ease; }
+    .mm-trigger:hover .mm-underline,
+    .mm-trigger[aria-expanded="true"] .mm-underline { opacity: 1; }
 
     /* ---- Mega menu links: blue on hover with arrow nudge ---- */
     .mega-link { transition: color .2s ease, padding-left .2s ease; }
@@ -131,17 +131,25 @@
       <!-- Desktop + mobile navigation -->
       <nav id="mainNav" class="absolute inset-x-0 top-full -translate-y-[130%] border-b border-slate-200 bg-white p-4 transition-transform duration-300 lg:static lg:translate-y-0 lg:border-0 lg:bg-transparent lg:p-0 lg:transition-none" aria-label="Main navigation">
         <ul class="flex flex-col items-stretch gap-1 lg:mt-2 lg:flex-row lg:items-center">
-          <!-- Services: hover/click pe mega menu kholta hai -->
+          <!-- Services: opens the mega menu on hover/click -->
           <li class="relative">
-            <button id="servicesBtn" class="relative flex items-center gap-1.5 rounded-lg px-3.5 py-1 text-base font-medium text-slate-600 transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="megaMenu">
+            <button id="servicesBtn" class="mm-trigger relative flex items-center gap-1.5 rounded-lg px-3.5 py-1 text-base font-medium text-slate-600 transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="megaMenu">
               Services
               <svg class="chevron h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="m6 9 6 6 6-6"/>
               </svg>
-              <span class="services-underline absolute inset-x-3.5 bottom-0 h-0.5 rounded-full bg-brand opacity-0"></span>
+              <span class="mm-underline absolute inset-x-3.5 bottom-0 h-0.5 rounded-full bg-brand opacity-0"></span>
             </button>
           </li>
-          <li><a href="#consultancy" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Consultancy</a></li>
+          <li class="relative">
+            <button id="consultancyBtn" class="mm-trigger relative flex items-center gap-1.5 rounded-lg px-3.5 py-1 text-base font-medium text-slate-600 transition-colors" aria-expanded="true" aria-haspopup="true" aria-controls="consultancyMenu">
+              Consultancy
+              <svg class="chevron h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+              <span class="mm-underline absolute inset-x-3.5 bottom-0 h-0.5 rounded-full bg-brand opacity-0"></span>
+            </button>
+          </li>
           <li><a href="#company" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Company</a></li>
           <li><a href="#portfolio" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Portfolio</a></li>
           <li><a href="#resources" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Resources</a></li>
@@ -280,6 +288,185 @@
                 <svg class="arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
               </a>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CONSULTANCY MEGA MENU ===== -->
+    <div id="consultancyMenu" class="mega-menu open absolute inset-x-0 top-full z-50 px-4 pb-8 pt-3" aria-hidden="false">
+      <div class="mx-auto max-h-[calc(100vh-88px)] w-full max-w-[1720px] overflow-hidden overflow-y-auto rounded-3xl border border-sky-100 bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35)] lg:overflow-visible">
+        <div class="grid lg:grid-cols-[minmax(0,4fr)_minmax(0,6.5fr)_minmax(0,2.5fr)]">
+
+          <!-- Intro / promotional panel -->
+          <div class="relative flex flex-col overflow-hidden border-b border-slate-100 bg-gradient-to-b from-sky-50/80 to-white p-6 lg:border-b-0 lg:border-r lg:p-8">
+            <div class="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand/10 blur-3xl" aria-hidden="true"></div>
+            <span class="text-[11px] font-bold uppercase tracking-[0.28em] text-brand">Our Consultancy</span>
+            <h3 class="mt-5 max-w-sm text-2xl font-extrabold leading-snug text-slate-900">
+              Strategic consulting that drives real
+              <span class="text-brand">business transformation.</span>
+            </h3>
+            <p class="mt-4 max-w-sm text-sm leading-relaxed text-slate-500">
+              We partner with organizations to solve complex challenges, optimize performance, and unlock sustainable growth through data-driven strategies and expert guidance.
+            </p>
+            <a href="#contact" class="btn-cta mt-7 inline-flex w-fit items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white">
+              Let's Discuss Your Goals
+              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <div class="mt-6 flex items-start gap-3 rounded-2xl border border-sky-100 bg-white/80 p-4 shadow-sm">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-brand">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">End-to-End Partnership</p>
+                <p class="mt-0.5 text-xs leading-relaxed text-slate-500">From strategy to execution, we stay with you at every step of your journey.</p>
+              </div>
+            </div>
+            <svg class="pointer-events-none absolute bottom-0 left-0 w-full text-brand/15" viewBox="0 0 400 120" fill="none" aria-hidden="true">
+              <path d="M0 90C60 40 120 110 180 70S320 20 400 60" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M0 100C70 55 140 120 210 85S330 40 400 75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M0 110C80 70 160 125 240 95S350 55 400 85" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- Service columns + bottom CTA -->
+          <div class="flex flex-col p-6 lg:p-8">
+            <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <!-- Strategy & Planning -->
+              <div>
+                <div class="flex items-center gap-3">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-brand">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                    </svg>
+                  </div>
+                  <h3 class="mega-col-title text-sm font-bold text-slate-900">Strategy & Planning</h3>
+                </div>
+                <span class="mt-3 block h-0.5 w-8 rounded-full bg-brand"></span>
+                <ul class="mt-4 space-y-2.5">
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Business Strategy</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Market Research & Analysis</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Growth Strategy</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Roadmap Development</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Competitive Analysis</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Change Management</a></li>
+                </ul>
+              </div>
+
+              <!-- Digital Transformation -->
+              <div>
+                <div class="flex items-center gap-3">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-brand">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-7"/><path d="M18 5h3v3"/>
+                    </svg>
+                  </div>
+                  <h3 class="mega-col-title text-sm font-bold text-slate-900">Digital Transformation</h3>
+                </div>
+                <span class="mt-3 block h-0.5 w-8 rounded-full bg-brand"></span>
+                <ul class="mt-4 space-y-2.5">
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Digital Transformation Strategy</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Business Automation</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Process Digitization</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Technology Integration</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Data & Analytics Strategy</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Innovation Consulting</a></li>
+                </ul>
+              </div>
+
+              <!-- Operations & Advisory -->
+              <div>
+                <div class="flex items-center gap-3">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-brand">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                    </svg>
+                  </div>
+                  <h3 class="mega-col-title text-sm font-bold text-slate-900">Operations & Advisory</h3>
+                </div>
+                <span class="mt-3 block h-0.5 w-8 rounded-full bg-brand"></span>
+                <ul class="mt-4 space-y-2.5">
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Process Optimization</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Performance Improvement</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Supply Chain Consulting</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Cost Optimization</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Risk Management</a></li>
+                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Operational Excellence</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="mt-8 flex flex-col gap-4 rounded-2xl border border-sky-100 bg-sky-50 p-5 sm:flex-row sm:items-center sm:justify-between">
+              <div class="flex items-center gap-4">
+                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand text-white shadow-lg shadow-brand/30">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="2" y="14" width="5" height="7" rx="2"/><rect x="17" y="14" width="5" height="7" rx="2"/><path d="M21 21v1a2 2 0 0 1-2 2h-4"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-slate-900">Need a custom consulting solution?</p>
+                  <p class="mt-0.5 max-w-md text-xs leading-relaxed text-slate-500">Let's discuss how we can help your business achieve sustainable growth and lasting impact.</p>
+                </div>
+              </div>
+              <a href="#contact" class="inline-flex shrink-0 items-center gap-2 rounded-full border-2 border-brand px-5 py-2.5 text-sm font-semibold text-brand transition-all duration-300 hover:bg-brand hover:text-white">
+                View All Consultancy Services
+                <svg class="arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Why choose IKfTech panel -->
+          <div class="flex flex-col border-t border-slate-100 bg-sky-50/60 p-6 lg:border-l lg:border-t-0 lg:p-8">
+            <span class="text-[11px] font-bold uppercase tracking-[0.28em] text-brand">Why Choose IKfTech?</span>
+            <ul class="mt-5 flex-1 space-y-5">
+              <li class="flex gap-3 border-b border-slate-100 pb-5 last:border-0">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-slate-900">Expert Consultants</p>
+                  <p class="mt-0.5 text-xs leading-relaxed text-slate-500">Industry experts with deep experience and proven results.</p>
+                </div>
+              </li>
+              <li class="flex gap-3 border-b border-slate-100 pb-5 last:border-0">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-7"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-slate-900">Data-Driven Insights</p>
+                  <p class="mt-0.5 text-xs leading-relaxed text-slate-500">We use data and analytics to drive smarter business decisions.</p>
+                </div>
+              </li>
+              <li class="flex gap-3 border-b border-slate-100 pb-5 last:border-0">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-slate-900">Customized Solutions</p>
+                  <p class="mt-0.5 text-xs leading-relaxed text-slate-500">Tailored strategies designed around your unique needs.</p>
+                </div>
+              </li>
+              <li class="flex gap-3 last:border-0">
+                <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m23 6-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-slate-900">Measurable Impact</p>
+                  <p class="mt-0.5 text-xs leading-relaxed text-slate-500">We focus on outcomes that create real, measurable business value.</p>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

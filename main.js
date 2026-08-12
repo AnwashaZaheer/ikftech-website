@@ -7,14 +7,14 @@ toggle.addEventListener('click', () => {
   if (isOpen) {
     nav.classList.remove('-translate-y-[130%]');
     toggle.setAttribute('aria-expanded', 'true');
-    setMegaMenu(false); // dono ek saath open na ho
+    closeAllMegaMenus(); // prevent both menus from being open at the same time
   } else {
     nav.classList.add('-translate-y-[130%]');
     toggle.setAttribute('aria-expanded', 'false');
   }
 });
 
-// Mobile nav: kisi bhi link par click karne se band
+// Mobile nav: close on any link click
 document.querySelectorAll('#mainNav a').forEach((link) => {
   link.addEventListener('click', () => {
     nav.classList.add('-translate-y-[130%]');
@@ -34,7 +34,7 @@ if (heroVideo) {
   ['click', 'touchstart', 'scroll'].forEach((evt) => document.addEventListener(evt, tryPlay, { once: true, passive: true }));
 }
 
-// ===== Header: scroll down pe hide, up pe show =====
+// ===== Header: hide on scroll down, show on scroll up =====
 const header = document.querySelector('header');
 let lastScrollY = window.scrollY;
 
@@ -64,49 +64,59 @@ const revealObserver = new IntersectionObserver(
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
 // ===== Services mega menu =====
-const servicesBtn = document.getElementById('servicesBtn');
-const megaMenu = document.getElementById('megaMenu');
-let menuTimer;
+const megaMenus = [
+  { btn: document.getElementById('servicesBtn'), menu: document.getElementById('megaMenu') },
+  { btn: document.getElementById('consultancyBtn'), menu: document.getElementById('consultancyMenu') },
+].filter((m) => m.btn && m.menu);
 
-const setMegaMenu = (open) => {
-  if (!servicesBtn || !megaMenu) return;
-  megaMenu.classList.toggle('open', open);
-  servicesBtn.setAttribute('aria-expanded', String(open));
-  megaMenu.setAttribute('aria-hidden', String(!open));
+const setMegaMenu = (target, open) => {
+  megaMenus.forEach(({ btn, menu }) => {
+    const isTarget = menu === target;
+    menu.classList.toggle('open', isTarget && open);
+    btn.setAttribute('aria-expanded', String(isTarget && open));
+    menu.setAttribute('aria-hidden', String(!(isTarget && open)));
+  });
   if (open && !nav.classList.contains('-translate-y-[130%]')) {
     nav.classList.add('-translate-y-[130%]');
     toggle.setAttribute('aria-expanded', 'false');
   }
 };
 
-if (servicesBtn && megaMenu) {
+const closeAllMegaMenus = () => megaMenus.forEach(({ menu }) => setMegaMenu(menu, false));
+
+if (megaMenus.length) {
   const desktopHover = window.matchMedia('(min-width: 1024px)');
 
-  // Desktop: hover se open/close
-  if (desktopHover.matches) {
-    servicesBtn.addEventListener('mouseenter', () => setMegaMenu(true));
-    servicesBtn.addEventListener('mouseleave', () => {
-      menuTimer = setTimeout(() => setMegaMenu(false), 120);
-    });
-    megaMenu.addEventListener('mouseenter', () => {
-      clearTimeout(menuTimer);
-      setMegaMenu(true);
-    });
-    megaMenu.addEventListener('mouseleave', () => {
-      menuTimer = setTimeout(() => setMegaMenu(false), 120);
-    });
-  }
+  megaMenus.forEach(({ btn, menu }) => {
+    let menuTimer;
 
-  // Mobile/desktop: click se toggle
-  servicesBtn.addEventListener('click', () => {
-    const isOpen = megaMenu.classList.contains('open');
-    clearTimeout(menuTimer);
-    setMegaMenu(!isOpen);
+    const open = () => {
+      clearTimeout(menuTimer);
+      setMegaMenu(menu, true);
+    };
+    const close = () => {
+      menuTimer = setTimeout(() => setMegaMenu(menu, false), 120);
+    };
+
+    // Desktop: open/close on hover
+    if (desktopHover.matches) {
+      btn.addEventListener('mouseenter', open);
+      btn.addEventListener('mouseleave', close);
+      menu.addEventListener('mouseenter', open);
+      menu.addEventListener('mouseleave', close);
+    }
+
+    // Mobile/desktop: toggle on click
+    btn.addEventListener('click', () => {
+      const isOpen = menu.classList.contains('open');
+      clearTimeout(menuTimer);
+      setMegaMenu(menu, !isOpen);
+    });
   });
 
-  // Menu ke bahar click karne se band
+  // Close when clicking outside the menu
   document.addEventListener('click', (e) => {
-    if (servicesBtn.contains(e.target) || megaMenu.contains(e.target)) return;
-    setMegaMenu(false);
+    const insideMenu = megaMenus.some(({ btn, menu }) => btn.contains(e.target) || menu.contains(e.target));
+    if (!insideMenu) closeAllMegaMenus();
   });
 }
