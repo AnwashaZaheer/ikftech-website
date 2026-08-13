@@ -208,9 +208,25 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* ---- Hero stats cards interactive hover effects ---- */
+    .hero-stat-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, filter 0.4s ease;
+      cursor: pointer;
+    }
+    .hero-stat-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      filter: drop-shadow(0 12px 24px rgba(59, 130, 246, 0.2));
+    }
+    .hero-stat-card:hover div {
+      transform: scale(1.08);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
   </style>
 </head>
 <body class="overflow-x-hidden bg-white text-[#0F172A] font-sans antialiased">
+  <!-- Scroll Progress Indicator -->
+  <div id="scrollProgress" class="fixed top-0 left-0 z-[100] h-1 bg-gradient-to-r from-brand to-cyan-400 w-0 transition-[width] duration-75"></div>
   <!-- ===== HEADER / NAVBAR ===== -->
   <header class="relative sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur-md transition-transform duration-300 will-change-transform">
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-2">
@@ -1072,8 +1088,8 @@
         </div>
 
         <div class="reveal mt-14 grid grid-cols-2 gap-6 border-t border-white/20 pt-8 sm:grid-cols-4" style="transition-delay: 450ms">
-          <div class="flex flex-col items-center text-center">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/40">
+          <div class="hero-stat-card flex flex-col items-center text-center">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/40 transition-transform">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
               </svg>
@@ -1081,8 +1097,8 @@
             <p class="mt-3 text-3xl font-extrabold text-white sm:text-4xl">120+</p>
             <p class="mt-1 text-sm font-medium text-slate-300">Projects Delivered</p>
           </div>
-          <div class="flex flex-col items-center text-center">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/40">
+          <div class="hero-stat-card flex flex-col items-center text-center">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/40 transition-transform">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
               </svg>
@@ -1090,8 +1106,8 @@
             <p class="mt-3 text-3xl font-extrabold text-white sm:text-4xl">80+</p>
             <p class="mt-1 text-sm font-medium text-slate-300">Happy Clients</p>
           </div>
-          <div class="flex flex-col items-center text-center">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/40">
+          <div class="hero-stat-card flex flex-col items-center text-center">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/40 transition-transform">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/>
               </svg>
@@ -1099,8 +1115,8 @@
             <p class="mt-3 text-3xl font-extrabold text-white sm:text-4xl">10+</p>
             <p class="mt-1 text-sm font-medium text-slate-300">Years of Experience</p>
           </div>
-          <div class="flex flex-col items-center text-center">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/40">
+          <div class="hero-stat-card flex flex-col items-center text-center">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/40 transition-transform">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
               </svg>

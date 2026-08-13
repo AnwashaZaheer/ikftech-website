@@ -47,6 +47,14 @@ window.addEventListener('scroll', () => {
     header.classList.remove('header-hidden');
   }
   lastScrollY = y;
+
+  // Scroll Progress Indicator
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  if (height > 0) {
+    const scrolled = (y / height) * 100;
+    const progress = document.getElementById('scrollProgress');
+    if (progress) progress.style.width = scrolled + '%';
+  }
 }, { passive: true });
 
 // ===== Scroll-reveal animation =====
