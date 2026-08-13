@@ -128,8 +128,7 @@
     #companyMenu .company-ico svg { transition: transform .25s ease; }
 
     #companyMenu .company-preview {
-      position: absolute;
-      inset: 0;
+      grid-area: 1 / 1;
       opacity: 0;
       visibility: hidden;
       transform: translateY(12px);
@@ -657,7 +656,7 @@
           </div>
 
           <!-- RIGHT: interactive preview -->
-          <div class="relative min-h-[340px] overflow-hidden p-4 sm:p-6 lg:min-h-[490px] lg:p-10">
+          <div class="relative grid min-h-[340px] overflow-hidden p-4 sm:p-6 lg:min-h-[490px] lg:p-10">
             <div class="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-sky-50 via-white to-sky-50" aria-hidden="true"></div>
             <div class="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full bg-brand/10 blur-3xl" aria-hidden="true"></div>
             <div class="pointer-events-none absolute -bottom-14 -left-10 h-52 w-52 rounded-full bg-sky-200/60 blur-3xl" aria-hidden="true"></div>
