@@ -136,8 +136,8 @@
       visibility: visible;
       transform: translateY(0);
     }
-    #companyMenu .company-preview-graphic { transition: transform .6s ease; max-width: 100%; }
-    #companyMenu .company-preview-graphic img { max-width: 100%; }
+    #companyMenu .company-preview-graphic { transition: transform .6s ease; max-width: 140px; }
+    #companyMenu .company-preview-graphic img { max-width: 100%; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
     #companyMenu .company-preview.active .company-preview-graphic { transform: scale(1); }
 
     /* ---- Mobile: touch-friendly tap targets inside the dropdowns ---- */
@@ -602,7 +602,7 @@
 
             <!-- Default preview -->
             <div data-pane="default" class="company-preview active flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[200px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+              <div class="company-preview-graphic relative w-full max-w-[140px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
                 <img src="https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Abstract technology" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
@@ -617,7 +617,7 @@
 
             <!-- AI-First preview -->
             <div data-pane="ai" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[200px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+              <div class="company-preview-graphic relative w-full max-w-[140px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
                 <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="AI-First Innovation" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
@@ -632,7 +632,7 @@
 
             <!-- About Us preview -->
             <div data-pane="about" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[200px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+              <div class="company-preview-graphic relative w-full max-w-[140px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
                 <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Who We Are" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
@@ -647,7 +647,7 @@
 
             <!-- How We Work preview -->
             <div data-pane="work" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[200px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+              <div class="company-preview-graphic relative w-full max-w-[140px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
                 <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Our Process" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
@@ -662,7 +662,7 @@
 
             <!-- Careers preview -->
             <div data-pane="careers" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[200px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+              <div class="company-preview-graphic relative w-full max-w-[140px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
                 <img src="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Build Your Future With Us" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
