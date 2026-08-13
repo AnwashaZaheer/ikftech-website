@@ -136,7 +136,8 @@
       visibility: visible;
       transform: translateY(0);
     }
-    #companyMenu .company-preview-graphic { transition: transform .6s ease; }
+    #companyMenu .company-preview-graphic { transition: transform .6s ease; max-width: 100%; }
+    #companyMenu .company-preview-graphic img { max-width: 100%; }
     #companyMenu .company-preview.active .company-preview-graphic { transform: scale(1); }
 
     /* ---- Mobile: touch-friendly tap targets inside the dropdowns ---- */
@@ -145,6 +146,7 @@
     }
 
     /* ---- Scroll-reveal: fade + slide in on view ---- */
+    .reveal {
       opacity: 0;
       transform: translateY(24px);
       transition: opacity .6s ease, transform .6s ease;
@@ -600,8 +602,8 @@
 
             <!-- Default preview -->
             <div data-pane="default" class="company-preview active flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-sm overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Abstract technology" class="h-56 w-full object-cover sm:h-64" loading="lazy" onerror="this.style.display='none'">
+              <div class="company-preview-graphic relative w-full max-w-[320px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Abstract technology" class="h-44 w-full max-w-full object-cover sm:h-48" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -615,8 +617,8 @@
 
             <!-- AI-First preview -->
             <div data-pane="ai" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-sm overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="AI-First Innovation" class="h-56 w-full object-cover sm:h-64" loading="lazy" onerror="this.style.display='none'">
+              <div class="company-preview-graphic relative w-full max-w-[320px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="AI-First Innovation" class="h-44 w-full max-w-full object-cover sm:h-48" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -630,8 +632,8 @@
 
             <!-- About Us preview -->
             <div data-pane="about" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-sm overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Who We Are" class="h-56 w-full object-cover sm:h-64" loading="lazy" onerror="this.style.display='none'">
+              <div class="company-preview-graphic relative w-full max-w-[320px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Who We Are" class="h-44 w-full max-w-full object-cover sm:h-48" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -645,8 +647,8 @@
 
             <!-- How We Work preview -->
             <div data-pane="work" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-sm overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Our Process" class="h-56 w-full object-cover sm:h-64" loading="lazy" onerror="this.style.display='none'">
+              <div class="company-preview-graphic relative w-full max-w-[320px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Our Process" class="h-44 w-full max-w-full object-cover sm:h-48" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -660,8 +662,8 @@
 
             <!-- Careers preview -->
             <div data-pane="careers" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-sm overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Build Your Future With Us" class="h-56 w-full object-cover sm:h-64" loading="lazy" onerror="this.style.display='none'">
+              <div class="company-preview-graphic relative w-full max-w-[320px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Build Your Future With Us" class="h-44 w-full max-w-full object-cover sm:h-48" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
