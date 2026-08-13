@@ -22,6 +22,36 @@ document.querySelectorAll('#mainNav a').forEach((link) => {
   });
 });
 
+// Mobile nav: close button
+const navClose = document.getElementById('navClose');
+if (navClose) {
+  navClose.addEventListener('click', () => {
+    nav.classList.add('-translate-y-[130%]');
+    toggle.setAttribute('aria-expanded', 'false');
+  });
+}
+
+// Sticky tap-hover feedback on touch devices (simulates hover on tap)
+if (window.matchMedia('(hover: none), (pointer: coarse)').matches) {
+  const hoverables = document.querySelectorAll('#mainNav a, #mainNav button, .mega-link, .resource-item');
+  let hoverTimer;
+  const clearHover = () => {
+    clearTimeout(hoverTimer);
+    hoverables.forEach((el) => el.classList.remove('tap-hover'));
+  };
+  hoverables.forEach((el) => {
+    el.addEventListener('touchstart', () => {
+      clearTimeout(hoverTimer);
+      hoverables.forEach((x) => x.classList.remove('tap-hover'));
+      el.classList.add('tap-hover');
+    }, { passive: true });
+    el.addEventListener('touchend', () => {
+      hoverTimer = setTimeout(() => hoverables.forEach((x) => x.classList.remove('tap-hover')), 600);
+    }, { passive: true });
+    el.addEventListener('touchcancel', clearHover);
+  });
+}
+
 // ===== Hero video autoplay handling =====
 const heroVideo = document.getElementById('heroVideo');
 if (heroVideo) {

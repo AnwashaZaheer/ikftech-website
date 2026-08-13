@@ -206,6 +206,25 @@
       .mega-link { padding: 4px 0; }
     }
 
+    /* ---- Tap feedback for links/buttons on touch devices (no hover) ---- */
+    @media (hover: none), (pointer: coarse) {
+      .nav-link:active,
+      .mm-trigger:active { color: #2563EB; }
+      .nav-link:active { background-color: rgba(134, 156, 202, 0.08); }
+      .mega-link:active { color: #2563EB; padding-left: 0.375rem; }
+      .mega-link:active .arrow { transform: translateX(2px); }
+      .resource-item:active { background-color: #eef5ff; border-color: #bfdbfe; box-shadow: 0 8px 24px -12px rgba(37, 99, 235, 0.35); }
+      .resource-item:active .resource-ico { background-color: #2563EB; color: #fff; }
+    }
+
+    /* ---- Sticky tap-hover on touch devices (class added via JS) ---- */
+    .nav-link.tap-hover { color: #2563EB; background-color: rgba(134, 156, 202, 0.08); }
+    .mm-trigger.tap-hover { color: #2563EB; }
+    .mega-link.tap-hover { color: #2563EB; padding-left: 0.375rem; }
+    .mega-link.tap-hover .arrow { transform: translateX(2px); }
+    .resource-item.tap-hover { background-color: #eef5ff; border-color: #bfdbfe; box-shadow: 0 8px 24px -12px rgba(37, 99, 235, 0.35); }
+    .resource-item.tap-hover .resource-ico { background-color: #2563EB; color: #fff; }
+
     /* ---- Scroll-reveal: fade + slide in on view ---- */
     .reveal {
       opacity: 0;
@@ -246,6 +265,11 @@
 
       <!-- Desktop + mobile navigation -->
       <nav id="mainNav" class="absolute inset-x-0 top-full -translate-y-[130%] border-b border-slate-200 bg-white p-4 transition-transform duration-300 lg:static lg:translate-y-0 lg:border-0 lg:bg-transparent lg:p-0 lg:transition-none" aria-label="Main navigation">
+        <div class="mb-2 flex items-center justify-end lg:hidden">
+          <button type="button" id="navClose" class="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-colors duration-300 active:bg-slate-200" aria-label="Close menu">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
         <ul class="flex flex-col items-stretch gap-1 lg:mt-2 lg:flex-row lg:items-center">
           <!-- Services: opens the mega menu on hover/click -->
           <li class="relative">
@@ -612,10 +636,10 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
 
-        <div class="relative grid grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:min-h-[490px]">
+        <div class="relative grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:min-h-[490px]">
 
           <!-- LEFT: company sections -->
-          <div class="flex flex-col border-r border-slate-100 p-4 sm:p-6 lg:p-10">
+          <div class="flex flex-col border-b border-slate-100 p-4 sm:p-6 lg:border-b-0 lg:border-r lg:p-10">
             <div class="flex items-center gap-2.5">
               <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-100 text-brand">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
