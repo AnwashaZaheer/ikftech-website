@@ -99,6 +99,12 @@ const setMegaMenu = (target, open) => {
     nav.classList.add('-translate-y-[130%]');
     toggle.setAttribute('aria-expanded', 'false');
   }
+
+  // Prevent background page scroll on mobile while a mega menu is open
+  if (window.matchMedia('(max-width: 1023px)').matches) {
+    const anyOpen = megaMenus.some(({ menu }) => menu.classList.contains('open'));
+    document.body.classList.toggle('overflow-hidden', anyOpen);
+  }
 };
 
 const closeAllMegaMenus = () => megaMenus.forEach(({ menu }) => setMegaMenu(menu, false));
