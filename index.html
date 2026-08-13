@@ -140,10 +140,14 @@
     #companyMenu .company-preview-graphic img { max-width: 100%; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
     #companyMenu .company-preview.active .company-preview-graphic { transform: scale(1); }
 
-    /* ---- Resources mega menu: active nav trigger ---- */
-    #resourcesBtn { color: #2563EB; }
-    #resourcesBtn .chevron { transform: rotate(180deg); }
-    #resourcesBtn .mm-underline { opacity: 1; }
+    /* ---- Resources mega menu: nav trigger (chevron + underline only on hover/open) ---- */
+    #resourcesBtn:hover { color: #2563EB; }
+    #resourcesBtn[aria-expanded="true"] { color: #2563EB; }
+    #resourcesBtn .chevron { transition: transform .3s ease; }
+    #resourcesBtn[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+    #resourcesBtn .mm-underline { transition: opacity .2s ease; }
+    #resourcesBtn:hover .mm-underline,
+    #resourcesBtn[aria-expanded="true"] .mm-underline { opacity: 1; }
 
     /* ---- Resources mega menu: editorial category list ---- */
     #resourcesMenu .resource-item { transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease; }
@@ -246,7 +250,7 @@
           </li>
           <li><a href="#portfolio" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Portfolio</a></li>
           <li class="relative">
-            <button id="resourcesBtn" class="mm-trigger relative flex items-center gap-1.5 rounded-lg px-3.5 py-1 text-base font-medium text-brand transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="resourcesMenu">
+            <button id="resourcesBtn" class="mm-trigger relative flex items-center gap-1.5 rounded-lg px-3.5 py-1 text-base font-medium text-slate-600 transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="resourcesMenu">
               Resources
               <svg class="chevron h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="m6 9 6 6 6-6"/>
