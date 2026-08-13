@@ -138,6 +138,11 @@ if (megaMenus.length) {
     if (!insideMenu) closeAllMegaMenus();
   });
 
+  // Close buttons at the top of each mega menu card
+  document.querySelectorAll('.mega-close').forEach((btn) => {
+    btn.addEventListener('click', closeAllMegaMenus);
+  });
+
   // ===== Company mega menu: interactive left-nav / right-preview =====
   if (companyMenu) {
     const companyItems = companyMenu.querySelectorAll('.company-item');
