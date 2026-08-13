@@ -140,6 +140,25 @@
     #companyMenu .company-preview-graphic img { max-width: 100%; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
     #companyMenu .company-preview.active .company-preview-graphic { transform: scale(1); }
 
+    /* ---- Resources mega menu: active nav trigger ---- */
+    #resourcesBtn { color: #2563EB; }
+    #resourcesBtn .chevron { transform: rotate(180deg); }
+    #resourcesBtn .mm-underline { opacity: 1; }
+
+    /* ---- Resources mega menu: editorial category list ---- */
+    #resourcesMenu .resource-item { transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease; }
+    #resourcesMenu .resource-item.active,
+    #resourcesMenu .resource-item:hover {
+      background-color: #eef5ff;
+      border-color: #bfdbfe;
+      box-shadow: 0 8px 24px -12px rgba(37, 99, 235, 0.35);
+    }
+    #resourcesMenu .resource-ico { transition: background-color .25s ease, color .25s ease, box-shadow .25s ease; }
+    #resourcesMenu .resource-item.active .resource-ico,
+    #resourcesMenu .resource-item:hover .resource-ico { background-color: #2563EB; color: #fff; box-shadow: 0 8px 20px -8px rgba(37, 99, 235, 0.7); }
+    #resourcesMenu .resource-item .arrow { transition: transform .2s ease; }
+    #resourcesMenu .resource-item:hover .arrow { transform: translateX(3px); }
+
     /* ---- Mobile: touch-friendly tap targets inside the dropdowns ---- */
     @media (max-width: 1023px) {
       .mega-link { padding: 4px 0; }
@@ -199,7 +218,15 @@
             </button>
           </li>
           <li><a href="#portfolio" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Portfolio</a></li>
-          <li><a href="#resources" class="nav-link block rounded-lg px-3.5 py-1 text-base font-medium text-slate-600">Resources</a></li>
+          <li class="relative">
+            <button id="resourcesBtn" class="mm-trigger relative flex items-center gap-1.5 rounded-lg px-3.5 py-1 text-base font-medium text-brand transition-colors" aria-expanded="false" aria-haspopup="true" aria-controls="resourcesMenu">
+              Resources
+              <svg class="chevron h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+              <span class="mm-underline absolute inset-x-3.5 bottom-0 h-0.5 rounded-full bg-brand opacity-0"></span>
+            </button>
+          </li>
           <li class="mt-2 lg:hidden">
             <a href="#contact" class="btn-cta inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3 text-base font-semibold text-white">
               Let's Connect
@@ -678,6 +705,211 @@
         </div>
       </div>
     </div>
+
+    <!-- ===== RESOURCES MEGA MENU (editorial content hub) ===== -->
+    <div id="resourcesMenu" class="mega-menu absolute inset-x-0 top-full z-50 px-4 pb-8 pt-3" aria-hidden="true">
+      <div class="relative mx-auto max-h-[calc(100vh-88px)] w-full max-w-7xl overflow-hidden overflow-y-auto rounded-3xl border border-sky-200 bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35),0_0_30px_-5px_rgba(37,99,235,0.35)] lg:overflow-visible">
+        <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl" aria-hidden="true">
+          <div class="absolute -left-24 top-6 h-64 w-64 rounded-full bg-sky-200/40 blur-3xl"></div>
+          <div class="absolute -right-20 -bottom-16 h-64 w-64 rounded-full bg-brand/10 blur-3xl"></div>
+        </div>
+
+        <div class="relative grid lg:grid-cols-[minmax(0,5fr)_minmax(0,6.5fr)]">
+
+          <!-- LEFT: explore resources -->
+          <div class="relative flex flex-col overflow-hidden border-b border-slate-100 p-5 lg:border-b-0 lg:border-r lg:p-7">
+            <div class="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand/10 blur-3xl" aria-hidden="true"></div>
+            <span class="text-[11px] font-bold uppercase tracking-[0.28em] text-brand">Explore Resources</span>
+            <p class="mt-2 max-w-sm text-[13px] leading-relaxed text-slate-500">Insights, guides, and knowledge to help you innovate, grow, and stay ahead in a digital world.</p>
+
+            <ul class="mt-3">
+              <!-- Insights & Articles -->
+              <li class="py-1.5">
+                <button type="button" class="resource-item active group flex w-full items-center gap-3 rounded-xl border border-sky-100 bg-sky-50/70 p-2.5 text-left">
+                  <span class="resource-ico flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M9 9H8"/>
+                    </svg>
+                  </span>
+                  <span class="flex-1">
+                    <span class="block text-sm font-bold text-slate-900">Insights &amp; Articles</span>
+                    <span class="mt-0.5 block text-xs leading-snug text-slate-500">Expert insights, industry trends, and in-depth articles.</span>
+                  </span>
+                  <svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </button>
+              </li>
+              <!-- Guides & Ebooks -->
+              <li class="border-t border-slate-100 py-1.5">
+                <button type="button" class="resource-item group flex w-full items-center gap-3 rounded-xl border border-transparent p-2.5 text-left">
+                  <span class="resource-ico flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                  </span>
+                  <span class="flex-1">
+                    <span class="block text-sm font-bold text-slate-900">Guides &amp; Ebooks</span>
+                    <span class="mt-0.5 block text-xs leading-snug text-slate-500">Step-by-step guides and downloadable resources.</span>
+                  </span>
+                  <svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </button>
+              </li>
+              <!-- Case Studies -->
+              <li class="border-t border-slate-100 py-1.5">
+                <button type="button" class="resource-item group flex w-full items-center gap-3 rounded-xl border border-transparent p-2.5 text-left">
+                  <span class="resource-ico flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M3 3v18h18"/><path d="M8 17v-5"/><path d="M13 17V8"/><path d="M18 17v-8"/>
+                    </svg>
+                  </span>
+                  <span class="flex-1">
+                    <span class="block text-sm font-bold text-slate-900">Case Studies</span>
+                    <span class="mt-0.5 block text-xs leading-snug text-slate-500">Real-world projects, solutions, and measurable results.</span>
+                  </span>
+                  <svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </button>
+              </li>
+              <!-- Videos & Webinars -->
+              <li class="border-t border-slate-100 py-1.5">
+                <button type="button" class="resource-item group flex w-full items-center gap-3 rounded-xl border border-transparent p-2.5 text-left">
+                  <span class="resource-ico flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m10 9 5 3-5 3z"/>
+                    </svg>
+                  </span>
+                  <span class="flex-1">
+                    <span class="block text-sm font-bold text-slate-900">Videos &amp; Webinars</span>
+                    <span class="mt-0.5 block text-xs leading-snug text-slate-500">Tutorials, webinars, and expert sessions on demand.</span>
+                  </span>
+                  <svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- RIGHT: search + featured resource -->
+          <div class="relative flex flex-col p-5 lg:p-7">
+            <!-- Search bar -->
+            <div class="flex items-center gap-2 rounded-full border border-slate-200 bg-white p-1 pl-3 shadow-sm">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-slate-400" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+              </svg>
+              <input type="text" placeholder="Search resources, topics, or keywords..." class="w-full min-w-0 bg-transparent text-[13px] text-slate-700 outline-none placeholder:text-slate-400" aria-label="Search resources">
+              <button type="button" class="inline-flex shrink-0 items-center gap-1.5 rounded-full border-2 border-brand px-3 py-1.5 text-[13px] font-semibold text-brand transition-all duration-300 hover:bg-brand hover:text-white">
+                Browse All
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+
+            <!-- Featured resource card -->
+            <div class="relative mt-4 flex flex-1 flex-col overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-50 via-white to-sky-50 p-5 shadow-lg shadow-brand/10 sm:p-6">
+              <div class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand/10 blur-3xl" aria-hidden="true"></div>
+              <div class="pointer-events-none absolute -bottom-14 -left-10 h-44 w-44 rounded-full bg-sky-200/60 blur-3xl" aria-hidden="true"></div>
+
+              <div class="relative flex flex-col items-center gap-6 sm:flex-row">
+                <div class="flex-1 text-center sm:text-left">
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-brand px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">Featured</span>
+                  <h4 class="mt-3 text-lg font-extrabold leading-snug text-slate-900">The Future of AI in Business</h4>
+                  <p class="mt-1.5 text-[13px] leading-relaxed text-slate-500">Explore how AI is transforming industries, optimizing operations, and creating new opportunities for growth.</p>
+                  <a href="#resources" class="btn-cta mt-4 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold text-white">
+                    Read Article
+                    <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+
+                <!-- 3D / isometric AI illustration (SVG, no photo) -->
+                <svg class="h-32 w-32 shrink-0 sm:h-40 sm:w-40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="chipTop" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#DBEAFE"/>
+                      <stop offset="100%" stop-color="#93C5FD"/>
+                    </linearGradient>
+                    <linearGradient id="chipSide" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#60A5FA"/>
+                      <stop offset="100%" stop-color="#2563EB"/>
+                    </linearGradient>
+                  </defs>
+
+                  <!-- soft glow -->
+                  <circle cx="100" cy="110" r="60" fill="#2563EB" opacity="0.12"/>
+                  <circle cx="100" cy="110" r="44" fill="#3B82F6" opacity="0.10"/>
+
+                  <!-- connections -->
+                  <g stroke="#60A5FA" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7" stroke-linecap="round">
+                    <path d="M78 92 40 64"/>
+                    <path d="M122 92 160 64"/>
+                    <path d="M78 130 44 150"/>
+                    <path d="M122 130 158 152"/>
+                    <path d="M100 80 100 40"/>
+                  </g>
+
+                  <!-- data nodes -->
+                  <g fill="#3B82F6">
+                    <circle cx="40" cy="64" r="5"/>
+                    <circle cx="160" cy="64" r="5"/>
+                    <circle cx="44" cy="150" r="5"/>
+                    <circle cx="158" cy="152" r="5"/>
+                    <circle cx="100" cy="40" r="5"/>
+                  </g>
+
+                  <!-- isometric AI chip -->
+                  <g>
+                    <polygon points="100,74 126,87 100,100 74,87" fill="url(#chipTop)"/>
+                    <polygon points="74,87 100,100 100,140 74,127" fill="#93C5FD"/>
+                    <polygon points="126,87 100,100 100,140 126,127" fill="url(#chipSide)"/>
+                    <g stroke="#FFFFFF" stroke-width="1.5" opacity="0.9" stroke-linecap="round">
+                      <path d="M100 81v8M96 84h8"/>
+                    </g>
+                  </g>
+
+                  <!-- mini analytics bars -->
+                  <g>
+                    <rect x="28" y="120" width="6" height="16" rx="1.5" fill="#93C5FD"/>
+                    <rect x="37" y="112" width="6" height="24" rx="1.5" fill="#60A5FA"/>
+                    <rect x="46" y="116" width="6" height="20" rx="1.5" fill="#2563EB"/>
+                  </g>
+
+                  <!-- small people icons -->
+                  <g stroke="#60A5FA" stroke-width="2" fill="none" stroke-linecap="round">
+                    <circle cx="166" cy="116" r="5"/>
+                    <path d="M161 128a5 5 0 0 1 10 0"/>
+                    <circle cx="176" cy="146" r="5"/>
+                    <path d="M171 158a5 5 0 0 1 10 0"/>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- carousel dots -->
+              <div class="relative mt-4 flex items-center justify-center gap-2">
+                <span class="h-2 w-6 rounded-full bg-brand"></span>
+                <span class="h-2 w-2 rounded-full bg-slate-200"></span>
+                <span class="h-2 w-2 rounded-full bg-slate-200"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BOTTOM CTA -->
+        <div class="relative border-t border-slate-100 p-4">
+          <div class="flex flex-col gap-3 rounded-2xl border border-sky-100 bg-sky-50 p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div class="flex items-center gap-3">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand text-white shadow-lg shadow-brand/30">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><circle cx="11.5" cy="15.5" r="2.5"/><path d="M14.2 17.2 16 19"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-bold text-slate-900">Looking for something specific?</p>
+                <p class="mt-0.5 text-[13px] leading-snug text-slate-500">Use our full resource library to find exactly what you need.</p>
+              </div>
+            </div>
+            <a href="#resources" class="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full border-2 border-brand px-5 py-2 text-[13px] font-semibold text-brand transition-all duration-300 hover:bg-brand hover:text-white sm:w-auto">
+              Explore All Resources
+              <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -719,20 +951,40 @@
         </div>
 
         <div class="reveal mt-14 grid grid-cols-2 gap-6 border-t border-white/20 pt-8 sm:grid-cols-4" style="transition-delay: 450ms">
-          <div>
-            <p class="text-3xl font-extrabold text-white sm:text-4xl">120+</p>
+          <div class="flex flex-col items-center text-center">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/40">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+              </svg>
+            </div>
+            <p class="mt-3 text-3xl font-extrabold text-white sm:text-4xl">120+</p>
             <p class="mt-1 text-sm font-medium text-slate-300">Projects Delivered</p>
           </div>
-          <div>
-            <p class="text-3xl font-extrabold text-white sm:text-4xl">80+</p>
+          <div class="flex flex-col items-center text-center">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/40">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <p class="mt-3 text-3xl font-extrabold text-white sm:text-4xl">80+</p>
             <p class="mt-1 text-sm font-medium text-slate-300">Happy Clients</p>
           </div>
-          <div>
-            <p class="text-3xl font-extrabold text-white sm:text-4xl">10+</p>
+          <div class="flex flex-col items-center text-center">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/40">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/>
+              </svg>
+            </div>
+            <p class="mt-3 text-3xl font-extrabold text-white sm:text-4xl">10+</p>
             <p class="mt-1 text-sm font-medium text-slate-300">Years of Experience</p>
           </div>
-          <div>
-            <p class="text-3xl font-extrabold text-white sm:text-4xl">24/7</p>
+          <div class="flex flex-col items-center text-center">
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-lg shadow-brand/40">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+              </svg>
+            </div>
+            <p class="mt-3 text-3xl font-extrabold text-white sm:text-4xl">24/7</p>
             <p class="mt-1 text-sm font-medium text-slate-300">Support Available</p>
           </div>
         </div>

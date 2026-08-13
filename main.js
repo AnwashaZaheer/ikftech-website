@@ -71,6 +71,7 @@ const megaMenus = [
   { btn: document.getElementById('servicesBtn'), menu: document.getElementById('megaMenu') },
   { btn: document.getElementById('consultancyBtn'), menu: document.getElementById('consultancyMenu') },
   { btn: document.getElementById('companyBtn'), menu: companyMenu },
+  { btn: document.getElementById('resourcesBtn'), menu: document.getElementById('resourcesMenu') },
 ].filter((m) => m.btn && m.menu);
 
 const setMegaMenu = (target, open) => {
