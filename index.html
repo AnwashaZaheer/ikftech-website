@@ -517,10 +517,10 @@
           <div class="absolute -right-20 -bottom-16 h-64 w-64 rounded-full bg-brand/10 blur-3xl"></div>
         </div>
 
-        <div class="relative grid lg:min-h-[560px] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]">
+        <div class="relative grid grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:min-h-[560px]">
 
           <!-- LEFT: company sections -->
-          <div class="flex flex-col border-b border-slate-100 p-6 sm:p-8 lg:border-b-0 lg:border-r lg:p-10">
+          <div class="flex flex-col border-r border-slate-100 p-4 sm:p-6 lg:p-10">
             <div class="flex items-center gap-2.5">
               <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-100 text-brand">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -595,15 +595,15 @@
           </div>
 
           <!-- RIGHT: interactive preview -->
-          <div class="relative min-h-[340px] overflow-hidden p-6 sm:p-8 lg:min-h-0 lg:p-10">
+          <div class="relative min-h-[340px] overflow-hidden p-4 sm:p-6 lg:min-h-0 lg:p-10">
             <div class="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-sky-50 via-white to-sky-50" aria-hidden="true"></div>
             <div class="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full bg-brand/10 blur-3xl" aria-hidden="true"></div>
             <div class="pointer-events-none absolute -bottom-14 -left-10 h-52 w-52 rounded-full bg-sky-200/60 blur-3xl" aria-hidden="true"></div>
 
             <!-- Default preview -->
             <div data-pane="default" class="company-preview active flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[320px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Abstract technology" class="h-44 w-full max-w-full object-cover sm:h-48" loading="lazy" onerror="this.style.display='none'">
+              <div class="company-preview-graphic relative w-full max-w-[200px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Abstract technology" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -617,8 +617,8 @@
 
             <!-- AI-First preview -->
             <div data-pane="ai" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[320px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="AI-First Innovation" class="h-44 w-full max-w-full object-cover sm:h-48" loading="lazy" onerror="this.style.display='none'">
+              <div class="company-preview-graphic relative w-full max-w-[200px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="AI-First Innovation" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -632,8 +632,8 @@
 
             <!-- About Us preview -->
             <div data-pane="about" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[320px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Who We Are" class="h-44 w-full max-w-full object-cover sm:h-48" loading="lazy" onerror="this.style.display='none'">
+              <div class="company-preview-graphic relative w-full max-w-[200px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Who We Are" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -647,8 +647,8 @@
 
             <!-- How We Work preview -->
             <div data-pane="work" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[320px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Our Process" class="h-44 w-full max-w-full object-cover sm:h-48" loading="lazy" onerror="this.style.display='none'">
+              <div class="company-preview-graphic relative w-full max-w-[200px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Our Process" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -662,8 +662,8 @@
 
             <!-- Careers preview -->
             <div data-pane="careers" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[320px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Build Your Future With Us" class="h-44 w-full max-w-full object-cover sm:h-48" loading="lazy" onerror="this.style.display='none'">
+              <div class="company-preview-graphic relative w-full max-w-[200px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
+                <img src="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Build Your Future With Us" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
                 <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
                 <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
