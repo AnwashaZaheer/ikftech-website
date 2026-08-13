@@ -22,15 +22,6 @@ document.querySelectorAll('#mainNav a').forEach((link) => {
   });
 });
 
-// Mobile nav: close button
-const navClose = document.getElementById('navClose');
-if (navClose) {
-  navClose.addEventListener('click', () => {
-    nav.classList.add('-translate-y-[130%]');
-    toggle.setAttribute('aria-expanded', 'false');
-  });
-}
-
 // Sticky tap-hover feedback on touch devices (simulates hover on tap)
 if (window.matchMedia('(hover: none), (pointer: coarse)').matches) {
   const hoverables = document.querySelectorAll('#mainNav a, #mainNav button, .mega-link, .resource-item');
