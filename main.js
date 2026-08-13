@@ -149,3 +149,37 @@ if (megaMenus.length) {
     companyMenu.addEventListener('mouseleave', () => setCompanyPreview('default'));
   }
 }
+
+// ===== Resources mega menu: featured carousel (auto-scroll) =====
+const featuredCarousel = document.getElementById('featuredCarousel');
+if (featuredCarousel) {
+  const slides = featuredCarousel.querySelectorAll('.featured-slide');
+  const dots = featuredCarousel.querySelectorAll('.featured-dot');
+  const INTERVAL = 2000;
+  let current = 0;
+  let timer;
+
+  const show = (index) => {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+  };
+
+  const start = () => {
+    clearInterval(timer);
+    timer = setInterval(() => show(current + 1), INTERVAL);
+  };
+  const stop = () => clearInterval(timer);
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      show(i);
+      start();
+    });
+  });
+
+  featuredCarousel.addEventListener('mouseenter', stop);
+  featuredCarousel.addEventListener('mouseleave', start);
+
+  start();
+}

@@ -159,6 +159,33 @@
     #resourcesMenu .resource-item .arrow { transition: transform .2s ease; }
     #resourcesMenu .resource-item:hover .arrow { transform: translateX(3px); }
 
+    /* ---- Resources mega menu: featured carousel ---- */
+    #featuredCarousel .featured-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(24px);
+      transition: opacity .5s ease, transform .5s ease, visibility .5s ease;
+    }
+    #featuredCarousel .featured-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+    #featuredCarousel .featured-dot {
+      height: 8px;
+      width: 8px;
+      border-radius: 9999px;
+      background-color: #e2e8f0;
+      transition: width .3s ease, background-color .3s ease;
+      cursor: pointer;
+    }
+    #featuredCarousel .featured-dot.active {
+      width: 24px;
+      background-color: #2563EB;
+    }
+
     /* ---- Mobile: touch-friendly tap targets inside the dropdowns ---- */
     @media (max-width: 1023px) {
       .mega-link { padding: 4px 0; }
@@ -801,88 +828,174 @@
             </div>
 
             <!-- Featured resource card -->
-            <div class="relative mt-4 flex flex-1 flex-col overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-50 via-white to-sky-50 p-5 shadow-lg shadow-brand/10 sm:p-6">
+            <div id="featuredCarousel" class="relative mt-4 flex flex-1 flex-col overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-50 via-white to-sky-50 p-5 shadow-lg shadow-brand/10 sm:p-6">
               <div class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand/10 blur-3xl" aria-hidden="true"></div>
               <div class="pointer-events-none absolute -bottom-14 -left-10 h-44 w-44 rounded-full bg-sky-200/60 blur-3xl" aria-hidden="true"></div>
 
-              <div class="relative flex flex-col items-center gap-6 sm:flex-row">
-                <div class="flex-1 text-center sm:text-left">
-                  <span class="inline-flex items-center gap-1.5 rounded-full bg-brand px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">Featured</span>
-                  <h4 class="mt-3 text-lg font-extrabold leading-snug text-slate-900">The Future of AI in Business</h4>
-                  <p class="mt-1.5 text-[13px] leading-relaxed text-slate-500">Explore how AI is transforming industries, optimizing operations, and creating new opportunities for growth.</p>
-                  <a href="#resources" class="btn-cta mt-4 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold text-white">
-                    Read Article
-                    <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                  </a>
+              <!-- carousel slides -->
+              <div class="relative flex min-h-[240px] flex-1">
+                <!-- SLIDE 1: AI -->
+                <div class="featured-slide active" data-slide="0">
+                  <div class="flex h-full w-full flex-col items-center justify-center gap-6 sm:flex-row">
+                    <div class="flex-1 text-center sm:text-left">
+                      <span class="inline-flex items-center gap-1.5 rounded-full bg-brand px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">Featured</span>
+                      <h4 class="mt-3 text-lg font-extrabold leading-snug text-slate-900">The Future of AI in Business</h4>
+                      <p class="mt-1.5 text-[13px] leading-relaxed text-slate-500">Explore how AI is transforming industries, optimizing operations, and creating new opportunities for growth.</p>
+                      <a href="#resources" class="btn-cta mt-4 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold text-white">
+                        Read Article
+                        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                      </a>
+                    </div>
+
+                    <!-- 3D / isometric AI illustration (SVG, no photo) -->
+                    <svg class="h-32 w-32 shrink-0 sm:h-40 sm:w-40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <defs>
+                        <linearGradient id="chipTop" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0%" stop-color="#DBEAFE"/>
+                          <stop offset="100%" stop-color="#93C5FD"/>
+                        </linearGradient>
+                        <linearGradient id="chipSide" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0%" stop-color="#60A5FA"/>
+                          <stop offset="100%" stop-color="#2563EB"/>
+                        </linearGradient>
+                      </defs>
+
+                      <!-- soft glow -->
+                      <circle cx="100" cy="110" r="60" fill="#2563EB" opacity="0.12"/>
+                      <circle cx="100" cy="110" r="44" fill="#3B82F6" opacity="0.10"/>
+
+                      <!-- connections -->
+                      <g stroke="#60A5FA" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7" stroke-linecap="round">
+                        <path d="M78 92 40 64"/>
+                        <path d="M122 92 160 64"/>
+                        <path d="M78 130 44 150"/>
+                        <path d="M122 130 158 152"/>
+                        <path d="M100 80 100 40"/>
+                      </g>
+
+                      <!-- data nodes -->
+                      <g fill="#3B82F6">
+                        <circle cx="40" cy="64" r="5"/>
+                        <circle cx="160" cy="64" r="5"/>
+                        <circle cx="44" cy="150" r="5"/>
+                        <circle cx="158" cy="152" r="5"/>
+                        <circle cx="100" cy="40" r="5"/>
+                      </g>
+
+                      <!-- isometric AI chip -->
+                      <g>
+                        <polygon points="100,74 126,87 100,100 74,87" fill="url(#chipTop)"/>
+                        <polygon points="74,87 100,100 100,140 74,127" fill="#93C5FD"/>
+                        <polygon points="126,87 100,100 100,140 126,127" fill="url(#chipSide)"/>
+                        <g stroke="#FFFFFF" stroke-width="1.5" opacity="0.9" stroke-linecap="round">
+                          <path d="M100 81v8M96 84h8"/>
+                        </g>
+                      </g>
+
+                      <!-- mini analytics bars -->
+                      <g>
+                        <rect x="28" y="120" width="6" height="16" rx="1.5" fill="#93C5FD"/>
+                        <rect x="37" y="112" width="6" height="24" rx="1.5" fill="#60A5FA"/>
+                        <rect x="46" y="116" width="6" height="20" rx="1.5" fill="#2563EB"/>
+                      </g>
+
+                      <!-- small people icons -->
+                      <g stroke="#60A5FA" stroke-width="2" fill="none" stroke-linecap="round">
+                        <circle cx="166" cy="116" r="5"/>
+                        <path d="M161 128a5 5 0 0 1 10 0"/>
+                        <circle cx="176" cy="146" r="5"/>
+                        <path d="M171 158a5 5 0 0 1 10 0"/>
+                      </g>
+                    </svg>
+                  </div>
                 </div>
 
-                <!-- 3D / isometric AI illustration (SVG, no photo) -->
-                <svg class="h-32 w-32 shrink-0 sm:h-40 sm:w-40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <defs>
-                    <linearGradient id="chipTop" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stop-color="#DBEAFE"/>
-                      <stop offset="100%" stop-color="#93C5FD"/>
-                    </linearGradient>
-                    <linearGradient id="chipSide" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0%" stop-color="#60A5FA"/>
-                      <stop offset="100%" stop-color="#2563EB"/>
-                    </linearGradient>
-                  </defs>
+                <!-- SLIDE 2: Cloud -->
+                <div class="featured-slide" data-slide="1">
+                  <div class="flex h-full w-full flex-col items-center justify-center gap-6 sm:flex-row">
+                    <div class="flex-1 text-center sm:text-left">
+                      <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-brand">Trending</span>
+                      <h4 class="mt-3 text-lg font-extrabold leading-snug text-slate-900">Scaling for the Cloud</h4>
+                      <p class="mt-1.5 text-[13px] leading-relaxed text-slate-500">Best practices for building secure, cost-effective, and highly scalable cloud infrastructure.</p>
+                      <a href="#resources" class="btn-cta mt-4 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold text-white">
+                        Read Article
+                        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                      </a>
+                    </div>
 
-                  <!-- soft glow -->
-                  <circle cx="100" cy="110" r="60" fill="#2563EB" opacity="0.12"/>
-                  <circle cx="100" cy="110" r="44" fill="#3B82F6" opacity="0.10"/>
+                    <svg class="h-32 w-32 shrink-0 sm:h-40 sm:w-40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <defs>
+                        <linearGradient id="cldTop" x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="0%" stop-color="#DBEAFE"/>
+                          <stop offset="100%" stop-color="#93C5FD"/>
+                        </linearGradient>
+                      </defs>
+                      <circle cx="100" cy="104" r="60" fill="#2563EB" opacity="0.12"/>
+                      <circle cx="100" cy="104" r="44" fill="#3B82F6" opacity="0.10"/>
+                      <path d="M64 120a16 16 0 0 1 2-32 22 22 0 0 1 41-10 17 17 0 0 1 33 11 13 13 0 0 1 1 31z" fill="url(#cldTop)" stroke="#93C5FD" stroke-width="2" stroke-linejoin="round"/>
+                      <g stroke="#60A5FA" stroke-width="2" stroke-linecap="round">
+                        <path d="M40 62h28M40 62l9-10M40 62l9 10"/>
+                        <path d="M160 62h-28M160 62l-9-10M160 62l-9 10"/>
+                      </g>
+                      <g fill="#3B82F6">
+                        <circle cx="42" cy="60" r="6"/>
+                        <circle cx="158" cy="60" r="6"/>
+                      </g>
+                      <rect x="72" y="148" width="12" height="22" rx="3" fill="#93C5FD"/>
+                      <rect x="94" y="138" width="12" height="32" rx="3" fill="#60A5FA"/>
+                      <rect x="116" y="144" width="12" height="26" rx="3" fill="#2563EB"/>
+                    </svg>
+                  </div>
+                </div>
 
-                  <!-- connections -->
-                  <g stroke="#60A5FA" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7" stroke-linecap="round">
-                    <path d="M78 92 40 64"/>
-                    <path d="M122 92 160 64"/>
-                    <path d="M78 130 44 150"/>
-                    <path d="M122 130 158 152"/>
-                    <path d="M100 80 100 40"/>
-                  </g>
+                <!-- SLIDE 3: Security -->
+                <div class="featured-slide" data-slide="2">
+                  <div class="flex h-full w-full flex-col items-center justify-center gap-6 sm:flex-row">
+                    <div class="flex-1 text-center sm:text-left">
+                      <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-brand">Guide</span>
+                      <h4 class="mt-3 text-lg font-extrabold leading-snug text-slate-900">Cybersecurity Essentials</h4>
+                      <p class="mt-1.5 text-[13px] leading-relaxed text-slate-500">A practical playbook to protect your business data and build trust with every customer.</p>
+                      <a href="#resources" class="btn-cta mt-4 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold text-white">
+                        Read Article
+                        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                      </a>
+                    </div>
 
-                  <!-- data nodes -->
-                  <g fill="#3B82F6">
-                    <circle cx="40" cy="64" r="5"/>
-                    <circle cx="160" cy="64" r="5"/>
-                    <circle cx="44" cy="150" r="5"/>
-                    <circle cx="158" cy="152" r="5"/>
-                    <circle cx="100" cy="40" r="5"/>
-                  </g>
-
-                  <!-- isometric AI chip -->
-                  <g>
-                    <polygon points="100,74 126,87 100,100 74,87" fill="url(#chipTop)"/>
-                    <polygon points="74,87 100,100 100,140 74,127" fill="#93C5FD"/>
-                    <polygon points="126,87 100,100 100,140 126,127" fill="url(#chipSide)"/>
-                    <g stroke="#FFFFFF" stroke-width="1.5" opacity="0.9" stroke-linecap="round">
-                      <path d="M100 81v8M96 84h8"/>
-                    </g>
-                  </g>
-
-                  <!-- mini analytics bars -->
-                  <g>
-                    <rect x="28" y="120" width="6" height="16" rx="1.5" fill="#93C5FD"/>
-                    <rect x="37" y="112" width="6" height="24" rx="1.5" fill="#60A5FA"/>
-                    <rect x="46" y="116" width="6" height="20" rx="1.5" fill="#2563EB"/>
-                  </g>
-
-                  <!-- small people icons -->
-                  <g stroke="#60A5FA" stroke-width="2" fill="none" stroke-linecap="round">
-                    <circle cx="166" cy="116" r="5"/>
-                    <path d="M161 128a5 5 0 0 1 10 0"/>
-                    <circle cx="176" cy="146" r="5"/>
-                    <path d="M171 158a5 5 0 0 1 10 0"/>
-                  </g>
-                </svg>
+                    <svg class="h-32 w-32 shrink-0 sm:h-40 sm:w-40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <defs>
+                        <linearGradient id="shldGrad" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stop-color="#DBEAFE"/>
+                          <stop offset="100%" stop-color="#93C5FD"/>
+                        </linearGradient>
+                      </defs>
+                      <circle cx="100" cy="104" r="60" fill="#2563EB" opacity="0.12"/>
+                      <circle cx="100" cy="104" r="44" fill="#3B82F6" opacity="0.10"/>
+                      <path d="M100 56 134 69v32c0 22-15 35-34 43-19-8-34-21-34-43V69z" fill="url(#shldGrad)" stroke="#60A5FA" stroke-width="2" stroke-linejoin="round"/>
+                      <rect x="87" y="94" width="26" height="20" rx="4" fill="#2563EB"/>
+                      <path d="M92 94v-6a8 8 0 0 1 16 0v6" stroke="#2563EB" stroke-width="3" fill="none" stroke-linecap="round"/>
+                      <circle cx="100" cy="104" r="3" fill="#fff"/>
+                      <g stroke="#60A5FA" stroke-width="2" stroke-dasharray="5 5" opacity="0.7">
+                        <path d="M48 66l32 20"/>
+                        <path d="M152 66l-32 20"/>
+                        <path d="M48 150l32-22"/>
+                        <path d="M152 150l-32-22"/>
+                      </g>
+                      <g fill="#3B82F6">
+                        <circle cx="42" cy="62" r="6"/>
+                        <circle cx="158" cy="62" r="6"/>
+                        <circle cx="42" cy="154" r="6"/>
+                        <circle cx="158" cy="154" r="6"/>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
               </div>
 
               <!-- carousel dots -->
-              <div class="relative mt-4 flex items-center justify-center gap-2">
-                <span class="h-2 w-6 rounded-full bg-brand"></span>
-                <span class="h-2 w-2 rounded-full bg-slate-200"></span>
-                <span class="h-2 w-2 rounded-full bg-slate-200"></span>
+              <div class="relative mt-4 flex items-center justify-center gap-2" role="tablist" aria-label="Featured resources">
+                <button type="button" class="featured-dot active" data-slide="0" aria-label="Slide 1"></button>
+                <button type="button" class="featured-dot" data-slide="1" aria-label="Slide 2"></button>
+                <button type="button" class="featured-dot" data-slide="2" aria-label="Slide 3"></button>
               </div>
             </div>
           </div>
