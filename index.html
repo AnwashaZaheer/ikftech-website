@@ -79,15 +79,19 @@
     /* ---- Header hides when scrolling down ---- */
     .header-hidden { transform: translateY(-100%); }
 
-    /* ---- Mega menu (Services dropdown) visibility ---- */
+    /* ---- Mega menu (Services dropdown) visibility + open/close animation ---- */
     .mega-menu {
       opacity: 0;
       visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity .3s ease, transform .3s ease, visibility 0s linear .3s;
       pointer-events: none;
     }
     .mega-menu.open {
       opacity: 1;
       visibility: visible;
+      transform: translateY(0);
+      transition: opacity .3s ease, transform .3s ease;
       pointer-events: auto;
     }
 
@@ -568,7 +572,7 @@
 
     <!-- ===== COMPANY MEGA MENU (interactive left-nav / right-preview) ===== -->
     <div id="companyMenu" class="mega-menu absolute inset-x-0 top-full z-50 px-4 pb-8 pt-3" aria-hidden="true">
-      <div class="relative mx-auto max-h-[calc(100vh-88px)] w-full max-w-6xl overflow-hidden overflow-y-auto rounded-3xl border border-sky-200 bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35),0_0_30px_-5px_rgba(37,99,235,0.25)]">
+      <div class="relative mx-auto max-h-[calc(100vh-88px)] w-full max-w-6xl overflow-hidden overflow-y-auto rounded-3xl border-2 border-brand bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35),0_0_30px_-5px_rgba(37,99,235,0.25)] lg:overflow-visible">
         <!-- Subtle blue glow waves around the edges -->
         <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl" aria-hidden="true">
           <div class="absolute -left-24 top-6 h-64 w-64 rounded-full bg-sky-200/40 blur-3xl"></div>
@@ -739,7 +743,7 @@
 
     <!-- ===== RESOURCES MEGA MENU (editorial content hub) ===== -->
     <div id="resourcesMenu" class="mega-menu absolute inset-x-0 top-full z-50 px-4 pb-8 pt-3" aria-hidden="true">
-      <div class="relative mx-auto max-h-[calc(100vh-88px)] w-full max-w-6xl overflow-hidden overflow-y-auto rounded-3xl border border-sky-200 bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35),0_0_30px_-5px_rgba(37,99,235,0.35)] lg:overflow-visible">
+      <div class="relative mx-auto max-h-[calc(100vh-88px)] w-full max-w-6xl overflow-hidden overflow-y-auto rounded-3xl border-2 border-brand bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35),0_0_30px_-5px_rgba(37,99,235,0.35)] lg:overflow-visible">
         <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl" aria-hidden="true">
           <div class="absolute -left-24 top-6 h-64 w-64 rounded-full bg-sky-200/40 blur-3xl"></div>
           <div class="absolute -right-20 -bottom-16 h-64 w-64 rounded-full bg-brand/10 blur-3xl"></div>

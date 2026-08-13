@@ -108,7 +108,7 @@ if (megaMenus.length) {
     };
     const close = () => {
       if (!desktopHover.matches) return;
-      menuTimer = setTimeout(() => setMegaMenu(menu, false), 250);
+      menuTimer = setTimeout(() => setMegaMenu(menu, false), 500);
     };
 
     btn.addEventListener('mouseenter', open);
