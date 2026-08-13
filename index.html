@@ -571,12 +571,13 @@
 
     <!-- ===== COMPANY MEGA MENU (interactive left-nav / right-preview) ===== -->
     <div id="companyMenu" class="mega-menu absolute inset-x-0 top-full z-50 px-4 pb-8 pt-3" aria-hidden="true">
-      <div class="relative mx-auto max-h-[calc(100vh-88px)] w-full max-w-6xl overflow-hidden overflow-y-auto rounded-3xl border-2 border-brand bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35),0_0_30px_-5px_rgba(37,99,235,0.25)] lg:overflow-visible">
-        <!-- Subtle blue glow waves around the edges -->
-        <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl" aria-hidden="true">
-          <div class="absolute -left-24 top-6 h-64 w-64 rounded-full bg-sky-200/40 blur-3xl"></div>
-          <div class="absolute -right-20 -bottom-16 h-64 w-64 rounded-full bg-brand/10 blur-3xl"></div>
-        </div>
+      <!-- Subtle blue glow waves around the edges (placed outside the inner card wrapper to allow overflow) -->
+      <div class="pointer-events-none absolute inset-0 mx-auto max-w-6xl px-4" aria-hidden="true">
+        <div class="absolute -left-20 top-6 h-64 w-64 rounded-full bg-sky-200/40 blur-3xl"></div>
+        <div class="absolute -right-16 -bottom-8 h-64 w-64 rounded-full bg-brand/10 blur-3xl"></div>
+      </div>
+
+      <div class="relative mx-auto max-h-[calc(100vh-88px)] w-full max-w-6xl overflow-hidden overflow-y-auto rounded-3xl border-2 border-brand bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35),0_0_30px_-5px_rgba(37,99,235,0.25)]">
 
         <div class="relative grid grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:min-h-[490px]">
 
