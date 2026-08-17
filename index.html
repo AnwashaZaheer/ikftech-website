@@ -807,6 +807,9 @@
       background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
     }
 
+    /* --- Mobile accent bar (hidden on desktop) --- */
+    .team-mobile-accent { display: none; }
+
     /* --- Responsive --- */
     @media (max-width: 1023px) {
       .team-portrait { width: 80px !important; height: 80px !important; }
@@ -816,21 +819,40 @@
     }
 
     @media (max-width: 767px) {
+      .team-section { padding-top: 48px !important; padding-bottom: 48px !important; }
       .team-composition {
         position: relative !important;
         width: 100% !important;
-        height: 340px !important;
-        min-height: 340px !important;
+        height: 300px !important;
+        min-height: 300px !important;
       }
       .team-portrait {
         position: absolute !important;
-        width: 68px !important; height: 68px !important;
+        width: 72px !important; height: 72px !important;
       }
       .team-center {
         position: absolute !important;
-        width: 74px !important; height: 74px !important;
+        width: 80px !important; height: 80px !important;
       }
-      .team-connector, .team-deco-dot, .team-glow-bg, .team-orbit, .team-orbit-2, .team-center-glow { display: none !important; }
+      /* Keep glow on mobile */
+      .team-glow-bg {
+        width: 280px !important; height: 280px !important;
+        left: 50% !important; top: 50% !important;
+        transform: translate(-50%,-50%) !important;
+      }
+      .team-center-glow { display: block !important; width: 140px !important; height: 140px !important; }
+      .team-orbit { width: 180px !important; height: 180px !important; margin-left: -90px !important; margin-top: -90px !important; border-width: 1px !important; opacity: .6; }
+      .team-orbit-2 { display: none !important; }
+      .team-connector { display: none !important; }
+      .team-deco-dot { display: none !important; }
+      /* Mobile accent bar */
+      .team-mobile-accent {
+        display: block !important;
+        width: 60px; height: 3px;
+        margin: 24px auto 0;
+        border-radius: 2px;
+        background: linear-gradient(90deg, #93c5fd, #2563EB, #93c5fd);
+      }
     }
   </style>
 </head>
@@ -1601,6 +1623,7 @@
                 <path d="M5 12h14M13 5l7 7-7 7"/>
               </svg>
             </a>
+            <div class="team-mobile-accent" aria-hidden="true"></div>
           </div>
 
           <!-- RIGHT: Hexagonal Team Composition -->
