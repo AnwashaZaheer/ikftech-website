@@ -677,8 +677,8 @@
       transition: transform .4s cubic-bezier(.34,1.56,.64,1), filter .3s ease, z-index 0s;
     }
     .team-portrait img {
-      width: 180%; height: 180%; object-fit: cover; object-position: center 18%; display: block;
-      margin: -40% 0 0 -40%;
+      width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
+      margin: 0;
       transition: transform .4s ease, filter .3s ease;
     }
     .team-portrait:hover {
@@ -1644,13 +1644,13 @@
             <div class="team-orbit-2" aria-hidden="true"></div>
 
             <!-- Center glow -->
-            <div class="team-center-glow" style="width:180px;height:180px;" aria-hidden="true"></div>
+            <div class="team-center-glow" style="width:220px;height:220px;" aria-hidden="true"></div>
 
             <!-- Connector lines (center to portraits) -->
-            <div class="team-connector" style="left:calc(50% - 0.5px);top:calc(50% - 100px);width:1px;height:48px;background:linear-gradient(to bottom,transparent,#93c5fd,transparent);animation-delay:-0.5s;" aria-hidden="true"></div>
-            <div class="team-connector" style="left:calc(50% - 0.5px);top:calc(50% + 52px);width:1px;height:48px;background:linear-gradient(to bottom,transparent,#93c5fd,transparent);animation-delay:-1.5s;" aria-hidden="true"></div>
-            <div class="team-connector" style="left:calc(50% - 128px);top:calc(50% - 0.5px);width:76px;height:1px;background:linear-gradient(to right,transparent,#93c5fd,transparent);animation-delay:-1s;" aria-hidden="true"></div>
-            <div class="team-connector" style="left:calc(50% + 52px);top:calc(50% - 0.5px);width:76px;height:1px;background:linear-gradient(to right,transparent,#93c5fd,transparent);animation-delay:-2s;" aria-hidden="true"></div>
+            <div class="team-connector" style="left:calc(50% - 0.5px);top:calc(50% - 120px);width:1px;height:50px;background:linear-gradient(to bottom,transparent,#93c5fd,transparent);animation-delay:-0.5s;" aria-hidden="true"></div>
+            <div class="team-connector" style="left:calc(50% - 0.5px);top:calc(50% + 70px);width:1px;height:50px;background:linear-gradient(to bottom,transparent,#93c5fd,transparent);animation-delay:-1.5s;" aria-hidden="true"></div>
+            <div class="team-connector" style="left:calc(50% - 98px);top:calc(50% - 0.5px);width:46px;height:1px;background:linear-gradient(to right,transparent,#93c5fd,transparent);animation-delay:-1s;" aria-hidden="true"></div>
+            <div class="team-connector" style="left:calc(50% + 52px);top:calc(50% - 0.5px);width:46px;height:1px;background:linear-gradient(to right,transparent,#93c5fd,transparent);animation-delay:-2s;" aria-hidden="true"></div>
 
             <!-- Decorative dots -->
             <div class="team-deco-dot" style="left:calc(50% + 195px);top:calc(50% - 175px)" aria-hidden="true"></div>
@@ -1659,43 +1659,43 @@
             <div class="team-deco-dot" style="left:calc(50% - 210px);top:calc(50% - 165px)" aria-hidden="true"></div>
 
             <!-- Portrait 1: Top center -->
-            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% - 50px);top:calc(50% - 200px);animation:teamFloat 5s ease-in-out 0s infinite;">
+            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% - 50px);top:calc(50% - 170px);animation:teamFloat 5s ease-in-out 0s infinite;">
               <div class="team-portrait-ring"></div>
               <img src="https://images.pexels.com/photos/3760514/pexels-photo-3760514.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=faces" alt="" loading="lazy">
             </div>
 
             <!-- Portrait 2: Top-left -->
-            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% - 178px);top:calc(50% - 125px);animation:teamFloat 5s ease-in-out -0.8s infinite;">
+            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% - 148px);top:calc(50% - 105px);animation:teamFloat 5s ease-in-out -0.8s infinite;">
               <div class="team-portrait-ring"></div>
               <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=faces" alt="" loading="lazy">
             </div>
 
             <!-- Portrait 3: Top-right -->
-            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% + 78px);top:calc(50% - 125px);animation:teamFloat 5s ease-in-out -1.6s infinite;">
+            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% + 48px);top:calc(50% - 105px);animation:teamFloat 5s ease-in-out -1.6s infinite;">
               <div class="team-portrait-ring"></div>
               <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=faces" alt="" loading="lazy">
             </div>
 
             <!-- Center: 25+ Experts -->
-            <div class="team-center" style="width:104px;height:104px;">
-              <span class="text-2xl font-extrabold text-white leading-none sm:text-[1.625rem]">25+</span>
-              <span class="text-[9px] font-bold uppercase tracking-[0.18em] text-blue-200 mt-0.5 sm:text-[10px]">Experts</span>
+            <div class="team-center" style="width:130px;height:130px;">
+              <span class="text-[1.75rem] font-extrabold text-white leading-none sm:text-3xl">25+</span>
+              <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-blue-200 mt-1 sm:text-[11px]">Experts</span>
             </div>
 
             <!-- Portrait 4: Bottom-left -->
-            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% - 178px);top:calc(50% + 25px);animation:teamFloat 5s ease-in-out -2.4s infinite;">
+            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% - 148px);top:calc(50% + 5px);animation:teamFloat 5s ease-in-out -2.4s infinite;">
               <div class="team-portrait-ring"></div>
               <img src="https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=faces" alt="" loading="lazy">
             </div>
 
             <!-- Portrait 5: Bottom-right -->
-            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% + 78px);top:calc(50% + 25px);animation:teamFloat 5s ease-in-out -3.2s infinite;">
+            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% + 48px);top:calc(50% + 5px);animation:teamFloat 5s ease-in-out -3.2s infinite;">
               <div class="team-portrait-ring"></div>
               <img src="https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=faces" alt="" loading="lazy">
             </div>
 
             <!-- Portrait 6: Bottom center -->
-            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% - 50px);top:calc(50% + 100px);animation:teamFloat 5s ease-in-out -4s infinite;">
+            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% - 50px);top:calc(50% + 70px);animation:teamFloat 5s ease-in-out -4s infinite;">
               <div class="team-portrait-ring"></div>
               <img src="https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=faces" alt="" loading="lazy">
             </div>
