@@ -653,6 +653,79 @@
         font-size: 0.75rem;
       }
     }
+
+    /* ===== Our Team Section ===== */
+    .team-section { position: relative; overflow: hidden; }
+
+    .team-hex-clip {
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    }
+
+    .team-portrait {
+      position: absolute;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      overflow: hidden;
+      transition: transform .35s ease, filter .35s ease;
+      z-index: 5;
+    }
+    .team-portrait:hover { transform: scale(1.1); z-index: 10; filter: brightness(1.08); }
+    .team-portrait img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .team-portrait-ring {
+      position: absolute; inset: -3px;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      background: linear-gradient(135deg, rgba(147,197,253,.5), rgba(37,99,235,.25));
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .team-center {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%,-50%);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      background: linear-gradient(145deg, #2563EB 0%, #1d4ed8 55%, #1e40af 100%);
+      z-index: 8;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 0 rgba(37,99,235,0);
+    }
+
+    .team-connector {
+      position: absolute; pointer-events: none; z-index: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, #bfdbfe 50%, transparent 100%);
+      transform-origin: left center;
+    }
+
+    .team-deco-dot {
+      position: absolute; pointer-events: none; z-index: 1;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #93c5fd; opacity: .5;
+    }
+
+    @media (max-width: 1023px) {
+      .team-portrait { width: 80px !important; height: 80px !important; }
+      .team-center { width: 86px !important; height: 86px !important; }
+    }
+
+    @media (max-width: 767px) {
+      .team-composition {
+        position: relative !important;
+        width: 100% !important;
+        height: 360px !important;
+        min-height: 360px !important;
+      }
+      .team-portrait {
+        position: absolute !important;
+        width: 72px !important; height: 72px !important;
+      }
+      .team-center {
+        position: absolute !important;
+        width: 78px !important; height: 78px !important;
+      }
+      .team-connector, .team-deco-dot, .team-glow-bg { display: none !important; }
+    }
   </style>
 </head>
 <body class="overflow-x-hidden bg-white text-[#0F172A] font-sans antialiased">
@@ -1395,6 +1468,99 @@
 
       </div>
     </section>
+
+    <!-- ===== OUR TEAM SECTION ===== -->
+    <section class="team-section bg-white py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto max-w-[1280px] px-6">
+        <div class="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-16 xl:gap-20">
+
+          <!-- LEFT: Content -->
+          <div class="flex-1 text-center lg:text-left lg:max-w-[480px]">
+            <span class="inline-block rounded-full bg-sky-50 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.25em] text-brand ring-1 ring-sky-200/60">Our Team</span>
+
+            <h2 class="mt-5 text-[1.75rem] font-extrabold leading-[1.15] tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem]">
+              Experts in
+              <span class="text-brand">technology.</span><br>
+              Partners in your
+              <span class="text-brand">growth.</span>
+            </h2>
+
+            <p class="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-slate-500 sm:text-base lg:mx-0 lg:text-[17px]">
+              We bring together diverse skills and perspectives to create technology that makes a real impact.
+            </p>
+
+            <a href="#about" class="btn-cta mt-7 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white sm:px-7 sm:py-3.5 sm:text-[0.9375rem]">
+              Meet the Team
+              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- RIGHT: Hexagonal Team Composition -->
+          <div class="team-composition relative flex-1 flex items-center justify-center" style="min-height:440px; max-width:520px;">
+
+            <!-- Subtle background glow -->
+            <div class="team-glow-bg pointer-events-none absolute left-1/2 top-1/2 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-50/80 blur-3xl" aria-hidden="true"></div>
+
+            <!-- Connector lines (center to portraits) -->
+            <div class="team-connector" style="left:calc(50% - 0.5px);top:calc(50% - 100px);width:1px;height:48px;background:linear-gradient(to bottom,transparent,#bfdbfe,transparent);" aria-hidden="true"></div>
+            <div class="team-connector" style="left:calc(50% - 0.5px);top:calc(50% + 52px);width:1px;height:48px;background:linear-gradient(to bottom,transparent,#bfdbfe,transparent);" aria-hidden="true"></div>
+
+            <!-- Decorative dots -->
+            <div class="team-deco-dot" style="left:calc(50% + 180px);top:calc(50% - 160px)" aria-hidden="true"></div>
+            <div class="team-deco-dot" style="left:calc(50% - 185px);top:calc(50% + 155px)" aria-hidden="true"></div>
+            <div class="team-deco-dot" style="left:calc(50% + 190px);top:calc(50% + 140px)" aria-hidden="true"></div>
+            <div class="team-deco-dot" style="left:calc(50% - 195px);top:calc(50% - 155px)" aria-hidden="true"></div>
+
+            <!-- Portrait 1: Top center -->
+            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% - 50px);top:calc(50% - 200px);">
+              <div class="team-portrait-ring"></div>
+              <img src="https://images.pexels.com/photos/3760514/pexels-photo-3760514.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=faces" alt="" loading="lazy">
+            </div>
+
+            <!-- Portrait 2: Top-left -->
+            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% - 178px);top:calc(50% - 125px);">
+              <div class="team-portrait-ring"></div>
+              <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=faces" alt="" loading="lazy">
+            </div>
+
+            <!-- Portrait 3: Top-right -->
+            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% + 78px);top:calc(50% - 125px);">
+              <div class="team-portrait-ring"></div>
+              <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=faces" alt="" loading="lazy">
+            </div>
+
+            <!-- Center: 25+ Experts -->
+            <div class="team-center" style="width:104px;height:104px;">
+              <span class="text-2xl font-extrabold text-white leading-none sm:text-[1.625rem]">25+</span>
+              <span class="text-[9px] font-bold uppercase tracking-[0.18em] text-blue-200 mt-0.5 sm:text-[10px]">Experts</span>
+            </div>
+
+            <!-- Portrait 4: Bottom-left -->
+            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% - 178px);top:calc(50% + 25px);">
+              <div class="team-portrait-ring"></div>
+              <img src="https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=faces" alt="" loading="lazy">
+            </div>
+
+            <!-- Portrait 5: Bottom-right -->
+            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% + 78px);top:calc(50% + 25px);">
+              <div class="team-portrait-ring"></div>
+              <img src="https://images.pexels.com/photos/3760607/pexels-photo-3760607.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=faces" alt="" loading="lazy">
+            </div>
+
+            <!-- Portrait 6: Bottom center -->
+            <div class="team-portrait" style="width:100px;height:100px;left:calc(50% - 50px);top:calc(50% + 100px);">
+              <div class="team-portrait-ring"></div>
+              <img src="https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=faces" alt="" loading="lazy">
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <script src="main.js"></script>
