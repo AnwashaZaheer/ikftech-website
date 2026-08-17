@@ -58,21 +58,34 @@ if (heroVideo) {
 // ===== Header: hide on scroll down, show on scroll up =====
 const header = document.querySelector('header');
 let lastScrollY = window.scrollY;
+let ticking = false;
 
-window.addEventListener('scroll', () => {
+const updateHeader = () => {
   const y = window.scrollY;
   const anyMegaOpen = document.querySelector('.mega-menu.open');
-  if (y > lastScrollY && y > 80 && !nav.classList.contains('-translate-y-[130%]') && !anyMegaOpen) {
+  const mobileNavOpen = !nav.classList.contains('-translate-y-[130%]');
+
+  if (anyMegaOpen || mobileNavOpen) {
+    header.classList.remove('header-hidden');
+  } else if (y > lastScrollY && y > 60) {
     header.classList.add('header-hidden');
-  } else {
+  } else if (y < lastScrollY) {
     header.classList.remove('header-hidden');
   }
   lastScrollY = y;
+  ticking = false;
+};
+
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(updateHeader);
+    ticking = true;
+  }
 
   // Scroll Progress Indicator
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   if (height > 0) {
-    const scrolled = (y / height) * 100;
+    const scrolled = (window.scrollY / height) * 100;
     const progress = document.getElementById('scrollProgress');
     if (progress) progress.style.width = scrolled + '%';
   }
@@ -92,6 +105,47 @@ const revealObserver = new IntersectionObserver(
 );
 
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+// ===== Service cards: scroll-reveal from sides + 3D tilt on hover =====
+const serviceCards = document.querySelectorAll('.service-card');
+
+// Mark cards as hidden initially
+serviceCards.forEach((card) => card.classList.add('card-hidden'));
+
+const cardObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('card-hidden');
+        entry.target.classList.add('card-reveal');
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.1 }
+);
+serviceCards.forEach((card) => cardObserver.observe(card));
+
+// 3D magnetic tilt on hover
+serviceCards.forEach((card) => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -5;
+    const rotateY = ((x - centerX) / centerX) * 5;
+
+    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
+    card.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2 + 20}px 50px -12px rgba(37, 99, 235, 0.2), ${-rotateY}px ${rotateX + 8}px 24px -8px rgba(37, 99, 235, 0.1)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.boxShadow = '';
+  });
+});
 
 // ===== Mega menus =====
 const companyMenu = document.getElementById('companyMenu');
