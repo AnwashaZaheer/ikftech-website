@@ -151,18 +151,20 @@ serviceCards.forEach((card) => {
 const companyMenu = document.getElementById('companyMenu');
 
 const megaMenus = [
-  { btn: document.getElementById('servicesBtn'), menu: document.getElementById('megaMenu') },
-  { btn: document.getElementById('consultancyBtn'), menu: document.getElementById('consultancyMenu') },
-  { btn: document.getElementById('companyBtn'), menu: companyMenu },
-  { btn: document.getElementById('resourcesBtn'), menu: document.getElementById('resourcesMenu') },
+  { btn: document.getElementById('servicesBtn'), menu: document.getElementById('megaMenu'), mobileMenu: document.getElementById('mobileServicesMenu') },
+  { btn: document.getElementById('consultancyBtn'), menu: document.getElementById('consultancyMenu'), mobileMenu: document.getElementById('mobileConsultancyMenu') },
+  { btn: document.getElementById('companyBtn'), menu: companyMenu, mobileMenu: document.getElementById('mobileCompanyMenu') },
+  { btn: document.getElementById('resourcesBtn'), menu: document.getElementById('resourcesMenu'), mobileMenu: document.getElementById('mobileResourcesMenu') },
 ].filter((m) => m.btn && m.menu);
 
 const setMegaMenu = (target, open) => {
-  megaMenus.forEach(({ btn, menu }) => {
+  megaMenus.forEach(({ btn, menu, mobileMenu }) => {
     const isTarget = menu === target;
     menu.classList.toggle('open', isTarget && open);
+    if (mobileMenu) mobileMenu.classList.toggle('open', isTarget && open);
     btn.setAttribute('aria-expanded', String(isTarget && open));
     menu.setAttribute('aria-hidden', String(!(isTarget && open)));
+    if (mobileMenu) mobileMenu.setAttribute('aria-hidden', String(!(isTarget && open)));
   });
   if (!open && target === companyMenu && companyMenu) {
     companyMenu.querySelectorAll('.company-preview').forEach((pane) => {
@@ -215,7 +217,9 @@ if (megaMenus.length) {
 
   // Close when clicking outside the menu
   document.addEventListener('click', (e) => {
-    const insideMenu = megaMenus.some(({ btn, menu }) => btn.contains(e.target) || menu.contains(e.target));
+    const insideMenu = megaMenus.some(({ btn, menu, mobileMenu }) =>
+      btn.contains(e.target) || menu.contains(e.target) || (mobileMenu && mobileMenu.contains(e.target))
+    );
     if (!insideMenu) closeAllMegaMenus();
   });
 
@@ -277,3 +281,8 @@ if (featuredCarousel) {
 
   start();
 }
+
+// ===== Mobile mega menu: close on link tap =====
+document.querySelectorAll('[data-close-mobile]').forEach((link) => {
+  link.addEventListener('click', () => closeAllMegaMenus());
+});

@@ -102,6 +102,72 @@
         transform: translateY(-28px);
         transition: opacity .35s ease, transform .35s ease, visibility 0s linear .35s;
       }
+      /* Hide full mega menu panels on mobile */
+      .mega-menu { display: none !important; }
+      .mega-menu.open { display: none !important; }
+    }
+
+    /* ---- Mobile simplified mega menus ---- */
+    .mobile-mega {
+      display: none;
+    }
+    @media (max-width: 1023px) {
+      .mobile-mega {
+        display: block;
+        position: absolute;
+        inset-x: 0;
+        top: 100%;
+        z-index: 50;
+        background: white;
+        border-bottom: 1px solid #e2e8f0;
+        box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-12px);
+        transition: opacity .3s ease, transform .3s ease, visibility 0s linear .3s;
+        pointer-events: none;
+        max-height: calc(100vh - 60px);
+        overflow-y: auto;
+      }
+      .mobile-mega.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        transition: opacity .3s ease, transform .3s ease;
+        pointer-events: auto;
+      }
+      .mobile-mega-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 20px;
+        border-bottom: 1px solid #f1f5f9;
+        text-decoration: none;
+        color: #334155;
+        font-size: 15px;
+        font-weight: 600;
+        transition: background .2s ease, color .2s ease;
+      }
+      .mobile-mega-item:active {
+        background: #f0f7ff;
+        color: #2563EB;
+      }
+      .mobile-mega-item .mm-label {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #94a3b8;
+        padding: 12px 20px 4px;
+      }
+      .mobile-mega-item .learn-more {
+        font-size: 12px;
+        font-weight: 600;
+        color: #2563EB;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
     }
 
     /* ---- Mega menu triggers (Services / Consultancy): chevron + underline only on hover/open ---- */
@@ -670,6 +736,22 @@
       </div>
     </div>
 
+    <!-- Mobile: Services simplified -->
+    <div id="mobileServicesMenu" class="mobile-mega" aria-hidden="true">
+      <div class="mobile-mega-item mm-label">Our Services</div>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Custom Software Development <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Web Application Development <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Mobile App Development <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Enterprise Solutions <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Cloud Development <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>IT Support & Maintenance <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Digital Transformation <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Business Automation <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Cybersecurity Solutions <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Managed IT Services <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#contact" class="mobile-mega-item" data-close-mobile style="color:#2563EB; font-weight:700;">Contact Us for Custom Solutions <span class="learn-more"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+    </div>
+
     <!-- ===== CONSULTANCY MEGA MENU ===== -->
     <div id="consultancyMenu" class="mega-menu absolute inset-x-0 top-full z-50 px-4 pb-8 pt-3" aria-hidden="true">
       <div class="relative mx-auto max-h-[calc(100vh-88px)] w-full max-w-6xl overflow-hidden overflow-y-auto rounded-3xl border-2 border-brand bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35),0_0_30px_-5px_rgba(37,99,235,0.35)] lg:overflow-hidden">
@@ -839,6 +921,19 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Mobile: Consultancy simplified -->
+    <div id="mobileConsultancyMenu" class="mobile-mega" aria-hidden="true">
+      <div class="mobile-mega-item mm-label">Our Consultancy</div>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Business Strategy <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Market Research & Analysis <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Growth Strategy <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Digital Transformation Strategy <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Process Optimization <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Risk Management <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#services" class="mobile-mega-item" data-close-mobile>Innovation Consulting <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#contact" class="mobile-mega-item" data-close-mobile style="color:#2563EB; font-weight:700;">Let's Discuss Your Goals <span class="learn-more"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
     </div>
 
     <!-- ===== COMPANY MEGA MENU (interactive left-nav / right-preview) ===== -->
@@ -1014,6 +1109,16 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Mobile: Company simplified -->
+    <div id="mobileCompanyMenu" class="mobile-mega" aria-hidden="true">
+      <div class="mobile-mega-item mm-label">Company</div>
+      <a href="#company" class="mobile-mega-item" data-close-mobile>AI-First Company <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#company" class="mobile-mega-item" data-close-mobile>About Us <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#company" class="mobile-mega-item" data-close-mobile>How We Work <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#company" class="mobile-mega-item" data-close-mobile>Careers <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#contact" class="mobile-mega-item" data-close-mobile style="color:#2563EB; font-weight:700;">Contact Us <span class="learn-more"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
     </div>
 
     <!-- ===== RESOURCES MEGA MENU (editorial content hub) ===== -->
@@ -1308,6 +1413,16 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Mobile: Resources simplified -->
+    <div id="mobileResourcesMenu" class="mobile-mega" aria-hidden="true">
+      <div class="mobile-mega-item mm-label">Explore Resources</div>
+      <a href="#resources" class="mobile-mega-item" data-close-mobile>Insights & Articles <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#resources" class="mobile-mega-item" data-close-mobile>Guides & Ebooks <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#resources" class="mobile-mega-item" data-close-mobile>Case Studies <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#resources" class="mobile-mega-item" data-close-mobile>Videos & Webinars <span class="learn-more">Learn More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
+      <a href="#contact" class="mobile-mega-item" data-close-mobile style="color:#2563EB; font-weight:700;">Browse All Resources <span class="learn-more"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></a>
     </div>
   </header>
 
