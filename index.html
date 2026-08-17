@@ -248,117 +248,162 @@
     .mm-trigger:hover .mm-underline,
     .mm-trigger[aria-expanded="true"] .mm-underline { opacity: 1; }
 
-    /* ---- Mega menu links: blue on hover with arrow nudge ---- */
-    .mega-link { transition: color .2s ease, padding-left .2s ease; }
-    .mega-link:hover { color: #2563EB; padding-left: 0.375rem; }
-    .mega-link .arrow { transition: transform .2s ease; }
-    .mega-link:hover .arrow { transform: translateX(2px); }
-    .mega-col-title { transition: color .2s ease; }
+    /* ---- Mega menu triggers (Services / Consultancy): chevron + underline only on hover/open ---- */
+    .mm-trigger:hover { color: #2563EB; }
+    .mm-trigger[aria-expanded="true"] { color: #2563EB; }
+    .mm-trigger .chevron { transition: transform .3s ease; }
+    .mm-trigger[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+    .mm-underline { transition: opacity .2s ease; }
+    .mm-trigger:hover .mm-underline,
+    .mm-trigger[aria-expanded="true"] .mm-underline { opacity: 1; }
 
-    /* ---- Consultancy mega menu: compact sizing to keep the same height as the Services menu ---- */
-    #consultancyMenu .mega-link { font-size: 13px; }
-    #consultancyMenu .mega-col-title { font-size: 13.5px; }
+    /* ---- Premium Desktop Mega Menu ---- */
+    @media (min-width: 1024px) {
+      .mega-menu {
+        position: absolute;
+        inset-x: 0;
+        top: 100%;
+        z-index: 50;
+        display: flex;
+        justify-content: center;
+        padding: 12px 24px 16px;
+      }
+      .mega-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.6fr);
+        width: 100%;
+        max-width: 820px;
+        background: #fff;
+        border: 1px solid rgba(191, 219, 254, 0.6);
+        border-radius: 20px;
+        box-shadow: 0 25px 60px -12px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(37, 99, 235, 0.04);
+        overflow: hidden;
+      }
 
-    /* ---- Company mega menu: interactive left-nav / right-preview ---- */
-    #companyMenu .company-item { transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease; }
-    #companyMenu .company-item.active {
-      background-color: #eef5ff;
-      border-color: #bfdbfe;
-      box-shadow: 0 8px 24px -12px rgba(37, 99, 235, 0.35);
-    }
-    #companyMenu .company-item.active .company-ico { background-color: #2563EB; color: #fff; box-shadow: 0 8px 20px -8px rgba(37, 99, 235, 0.7); }
-    #companyMenu .company-item.active .company-ico svg { transform: scale(1.05); }
-    #companyMenu .company-ico { transition: background-color .25s ease, color .25s ease, box-shadow .25s ease, transform .25s ease; }
-    #companyMenu .company-ico svg { transition: transform .25s ease; }
+      /* Left featured panel */
+      .mega-left {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 32px 28px 28px;
+        background: linear-gradient(160deg, #f8fbff 0%, #eff6ff 50%, #e0edff 100%);
+        border-right: 1px solid rgba(191, 219, 254, 0.45);
+        overflow: hidden;
+      }
+      .mega-left-icon {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        box-shadow: 0 4px 12px -3px rgba(37, 99, 235, 0.2);
+        margin-bottom: 16px;
+      }
+      .mega-left-title {
+        font-size: 18px;
+        font-weight: 800;
+        color: #0f172a;
+        letter-spacing: -0.02em;
+        margin-bottom: 8px;
+      }
+      .mega-left-desc {
+        font-size: 13px;
+        line-height: 1.6;
+        color: #64748b;
+        max-width: 260px;
+      }
+      .mega-left-illust {
+        margin-top: auto;
+        padding-top: 20px;
+      }
+      .mega-left-illust svg {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        opacity: 0.85;
+      }
 
-    #companyMenu .company-preview {
-      grid-area: 1 / 1;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(12px);
-      transition: opacity .35s ease, transform .35s ease, visibility .35s ease;
-    }
-    #companyMenu .company-preview.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    #companyMenu .company-preview-graphic { transition: transform .6s ease; max-width: 280px; }
-    #companyMenu .company-preview-graphic img { max-width: 100%; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
-    #companyMenu .company-preview.active .company-preview-graphic { transform: scale(1); }
+      /* Right links panel */
+      .mega-right {
+        display: flex;
+        flex-direction: column;
+        padding: 24px 28px 20px;
+      }
+      .mega-links-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px 24px;
+        flex: 1;
+      }
+      .mega-link-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: #334155;
+        font-size: 13.5px;
+        font-weight: 600;
+        transition: background .2s ease, color .2s ease;
+      }
+      .mega-link-item:hover {
+        background: #f0f7ff;
+        color: #2563EB;
+      }
+      .mega-link-item:hover .mega-link-ico {
+        background: #dbeafe;
+        color: #2563EB;
+      }
+      .mega-link-item:hover .mega-link-arrow {
+        transform: translateX(3px);
+        opacity: 1;
+      }
+      .mega-link-ico {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background: #f1f5f9;
+        color: #64748b;
+        flex-shrink: 0;
+        transition: background .2s ease, color .2s ease;
+      }
+      .mega-link-text {
+        flex: 1;
+        min-width: 0;
+      }
+      .mega-link-arrow {
+        flex-shrink: 0;
+        opacity: 0;
+        transform: translateX(-4px);
+        transition: transform .2s ease, opacity .2s ease;
+        color: #2563EB;
+      }
 
-    /* ---- Resources mega menu: nav trigger (chevron + underline only on hover/open) ---- */
-    #resourcesBtn:hover { color: #2563EB; }
-    #resourcesBtn[aria-expanded="true"] { color: #2563EB; }
-    #resourcesBtn .chevron { transition: transform .3s ease; }
-    #resourcesBtn[aria-expanded="true"] .chevron { transform: rotate(180deg); }
-    #resourcesBtn .mm-underline { transition: opacity .2s ease; }
-    #resourcesBtn:hover .mm-underline,
-    #resourcesBtn[aria-expanded="true"] .mm-underline { opacity: 1; }
-
-    /* ---- Resources mega menu: editorial category list ---- */
-    #resourcesMenu .resource-item { transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease; }
-    #resourcesMenu .resource-item.active,
-    #resourcesMenu .resource-item:hover {
-      background-color: #eef5ff;
-      border-color: #bfdbfe;
-      box-shadow: 0 8px 24px -12px rgba(37, 99, 235, 0.35);
+      /* View All CTA */
+      .mega-view-all {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 6px;
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px solid #f1f5f9;
+        font-size: 13px;
+        font-weight: 700;
+        color: #2563EB;
+        text-decoration: none;
+        transition: gap .2s ease;
+      }
+      .mega-view-all:hover {
+        gap: 10px;
+      }
     }
-    #resourcesMenu .resource-ico { transition: background-color .25s ease, color .25s ease, box-shadow .25s ease; }
-    #resourcesMenu .resource-item.active .resource-ico,
-    #resourcesMenu .resource-item:hover .resource-ico { background-color: #2563EB; color: #fff; box-shadow: 0 8px 20px -8px rgba(37, 99, 235, 0.7); }
-    #resourcesMenu .resource-item .arrow { transition: transform .2s ease; }
-    #resourcesMenu .resource-item:hover .arrow { transform: translateX(3px); }
-
-    /* ---- Resources mega menu: featured carousel ---- */
-    #featuredCarousel .featured-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateX(24px);
-      transition: opacity .5s ease, transform .5s ease, visibility .5s ease;
-    }
-    #featuredCarousel .featured-slide.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(0);
-    }
-    #featuredCarousel .featured-dot {
-      height: 8px;
-      width: 8px;
-      border-radius: 9999px;
-      background-color: #e2e8f0;
-      transition: width .3s ease, background-color .3s ease;
-      cursor: pointer;
-    }
-    #featuredCarousel .featured-dot.active {
-      width: 24px;
-      background-color: #2563EB;
-    }
-
-    /* ---- Mobile: touch-friendly tap targets inside the dropdowns ---- */
-    @media (max-width: 1023px) {
-      .mega-link { padding: 4px 0; }
-    }
-
-    /* ---- Tap feedback for links/buttons on touch devices (no hover) ---- */
-    @media (hover: none), (pointer: coarse) {
-      .nav-link:active,
-      .mm-trigger:active { color: #2563EB; }
-      .nav-link:active { background-color: rgba(134, 156, 202, 0.08); }
-      .mega-link:active { color: #2563EB; padding-left: 0.375rem; }
-      .mega-link:active .arrow { transform: translateX(2px); }
-      .resource-item:active { background-color: #eef5ff; border-color: #bfdbfe; box-shadow: 0 8px 24px -12px rgba(37, 99, 235, 0.35); }
-      .resource-item:active .resource-ico { background-color: #2563EB; color: #fff; }
-    }
-
-    /* ---- Sticky tap-hover on touch devices (class added via JS) ---- */
-    .nav-link.tap-hover { color: #2563EB; background-color: rgba(134, 156, 202, 0.08); }
-    .mm-trigger.tap-hover { color: #2563EB; }
-    .mega-link.tap-hover { color: #2563EB; padding-left: 0.375rem; }
-    .mega-link.tap-hover .arrow { transform: translateX(2px); }
-    .resource-item.tap-hover { background-color: #eef5ff; border-color: #bfdbfe; box-shadow: 0 8px 24px -12px rgba(37, 99, 235, 0.35); }
     .resource-item.tap-hover .resource-ico { background-color: #2563EB; color: #fff; }
 
     /* ---- Scroll-reveal: fade + slide in on view ---- */
@@ -690,117 +735,63 @@
     </div>
 
     <!-- ===== SERVICES MEGA MENU ===== -->
-    <div id="megaMenu" class="mega-menu absolute inset-x-0 top-full z-50 px-4 pb-8 pt-3" aria-hidden="true">
-      <div class="relative mx-auto max-h-[calc(100vh-88px)] w-full max-w-6xl overflow-hidden overflow-y-auto rounded-3xl border-2 border-brand bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35),0_0_30px_-5px_rgba(37,99,235,0.35)] lg:overflow-hidden">
-        <button type="button" class="mega-close absolute right-4 top-4 z-30 flex h-9 w-9 items-center justify-center rounded-full bg-white/95 text-slate-600 shadow-md ring-1 ring-slate-200 transition-all duration-300 hover:bg-slate-50 hover:text-brand active:scale-90" aria-label="Close menu">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
-        </button>
-        <div class="grid lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:min-h-[490px]">
-          <!-- Left promotional panel -->
-          <div class="relative flex flex-col overflow-hidden border-b border-slate-100 p-6 lg:border-b-0 lg:border-r lg:p-10">
-            <div class="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand/10 blur-3xl" aria-hidden="true"></div>
-            <span class="text-[11px] font-bold uppercase tracking-[0.28em] text-brand">Our Services</span>
-            <h3 class="mt-5 max-w-sm text-2xl font-extrabold leading-snug text-slate-900">
-              Innovative IT solutions that drive your
-              <span class="text-brand">business forward.</span>
-            </h3>
-            <p class="mt-4 max-w-sm text-sm leading-relaxed text-slate-500">
-              We combine technology, strategy, and creativity to build solutions that help businesses grow, scale and succeed.
-            </p>
-            <a href="#contact" class="btn-cta mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white sm:w-fit">
-              Let's Connect
-              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
-            <svg class="pointer-events-none absolute bottom-0 left-0 w-full text-brand/15" viewBox="0 0 400 120" fill="none" aria-hidden="true">
-              <path d="M0 90C60 40 120 110 180 70S320 20 400 60" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M0 100C70 55 140 120 210 85S330 40 400 75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M0 110C80 70 160 125 240 95S350 55 400 85" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+    <div id="megaMenu" class="mega-menu" aria-hidden="true">
+      <div class="mega-panel">
+        <div class="mega-left">
+          <div class="mega-left-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="mega-left-title">Services</div>
+          <p class="mega-left-desc">End-to-end technology solutions to build, scale and secure your business.</p>
+          <div class="mega-left-illust">
+            <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="30" y="30" width="50" height="50" rx="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+              <rect x="42" y="42" width="26" height="26" rx="4" fill="#bfdbfe" stroke="#60a5fa" stroke-width="1"/>
+              <rect x="90" y="20" width="70" height="44" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.2"/>
+              <line x1="100" y1="34" x2="140" y2="34" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+              <line x1="100" y1="42" x2="130" y2="42" stroke="#93c5fd" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+              <line x1="100" y1="50" x2="120" y2="50" stroke="#bfdbfe" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+              <circle cx="145" cy="90" r="20" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.2"/>
+              <path d="M140 90 L145 82 L150 90 L145 98 Z" fill="#2563EB" opacity="0.6"/>
+              <path d="M55 95 L80 75 L105 95" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+              <circle cx="105" cy="95" r="3" fill="#2563EB" opacity="0.4"/>
             </svg>
           </div>
-
-          <!-- Right: service categories + callout -->
-          <div class="p-6 lg:p-10">
-            <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              <!-- Category 1: IT Solutions & Development -->
-              <div>
-                <div class="flex items-center gap-3">
-                  <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-brand">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-                    </svg>
-                  </div>
-                  <h3 class="mega-col-title text-sm font-bold text-slate-900">IT Solutions & Development</h3>
-                </div>
-                <ul class="mt-5 space-y-2.5">
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Custom Software Development</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Web Application Development</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Mobile App Development</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Enterprise Solutions</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Cloud Development</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>IT Support & Maintenance</a></li>
-                </ul>
-              </div>
-
-              <!-- Category 2: Digital Strategy & Growth -->
-              <div>
-                <div class="flex items-center gap-3">
-                  <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-brand">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-7"/><path d="M18 5h3v3"/>
-                    </svg>
-                  </div>
-                  <h3 class="mega-col-title text-sm font-bold text-slate-900">Digital Strategy & Growth</h3>
-                </div>
-                <ul class="mt-5 space-y-2.5">
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Digital Transformation</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Business Automation</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Data Analytics & BI</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Product Strategy</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Technology Consulting</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>IT Infrastructure</a></li>
-                </ul>
-              </div>
-
-              <!-- Category 3: Managed Services & Security -->
-              <div>
-                <div class="flex items-center gap-3">
-                  <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-brand">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                  </div>
-                  <h3 class="mega-col-title text-sm font-bold text-slate-900">Managed Services & Security</h3>
-                </div>
-                <ul class="mt-5 space-y-2.5">
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Managed IT Services</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Cybersecurity Solutions</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Cloud Hosting & DevOps</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Network & Infrastructure</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Security Monitoring</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Backup & Disaster Recovery</a></li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Bottom callout: custom solution CTA -->
-            <div class="mt-8 flex flex-col gap-4 rounded-2xl border border-sky-100 bg-sky-50 p-5 sm:flex-row sm:items-center sm:justify-between">
-              <div class="flex items-center gap-4">
-                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand text-white shadow-lg shadow-brand/30">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-sm font-bold text-slate-900">Need a custom solution?</p>
-                  <p class="mt-0.5 max-w-md text-xs leading-relaxed text-slate-500">Let's discuss how we can help your business grow with reliable and scalable technology.</p>
-                </div>
-              </div>
-              <a href="#contact" class="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full border-2 border-brand px-5 py-2.5 text-sm font-semibold text-brand transition-all duration-300 hover:bg-brand hover:text-white sm:w-auto">
-                View All Services
-                <svg class="arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </a>
-            </div>
+        </div>
+        <div class="mega-right">
+          <div class="mega-links-grid">
+            <a href="#contact" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+              <span class="mega-link-text">Software Development</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></span>
+              <span class="mega-link-text">Cloud & DevOps</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></span>
+              <span class="mega-link-text">AI & Automation</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-7"/></svg></span>
+              <span class="mega-link-text">Digital Transformation</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+              <span class="mega-link-text">Cybersecurity</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
+              <span class="mega-link-text">IT Consulting</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
           </div>
+          <a href="#services" class="mega-view-all">View All Services <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -823,172 +814,65 @@
     </div>
 
     <!-- ===== CONSULTANCY MEGA MENU ===== -->
-    <div id="consultancyMenu" class="mega-menu absolute inset-x-0 top-full z-50 px-4 pb-8 pt-3" aria-hidden="true">
-      <div class="relative mx-auto max-h-[calc(100vh-88px)] w-full max-w-6xl overflow-hidden overflow-y-auto rounded-3xl border-2 border-brand bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35),0_0_30px_-5px_rgba(37,99,235,0.35)] lg:overflow-hidden">
-        <button type="button" class="mega-close absolute right-4 top-4 z-30 flex h-9 w-9 items-center justify-center rounded-full bg-white/95 text-slate-600 shadow-md ring-1 ring-slate-200 transition-all duration-300 hover:bg-slate-50 hover:text-brand active:scale-90" aria-label="Close menu">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
-        </button>
-        <div class="grid lg:grid-cols-[minmax(0,4fr)_minmax(0,6.5fr)_minmax(0,2.5fr)] lg:min-h-[490px]">
-
-          <!-- Intro / promotional panel -->
-          <div class="relative flex flex-col overflow-hidden border-b border-slate-100 p-6 lg:border-b-0 lg:border-r lg:p-10">
-            <div class="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand/10 blur-3xl" aria-hidden="true"></div>
-            <span class="text-[11px] font-bold uppercase tracking-[0.28em] text-brand">Our Consultancy</span>
-            <h3 class="mt-5 max-w-sm text-2xl font-extrabold leading-snug text-slate-900">
-              Strategic consulting that drives real
-              <span class="text-brand">business transformation.</span>
-            </h3>
-            <p class="mt-4 max-w-sm text-sm leading-relaxed text-slate-500">
-              We partner with organizations to solve complex challenges, optimize performance, and unlock sustainable growth through data-driven strategies and expert guidance.
-            </p>
-            <a href="#contact" class="btn-cta mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white sm:w-fit">
-              Let's Discuss Your Goals
-              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
-            <svg class="pointer-events-none absolute bottom-0 left-0 w-full text-brand/15" viewBox="0 0 400 120" fill="none" aria-hidden="true">
-              <path d="M0 90C60 40 120 110 180 70S320 20 400 60" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M0 100C70 55 140 120 210 85S330 40 400 75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M0 110C80 70 160 125 240 95S350 55 400 85" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+    <div id="consultancyMenu" class="mega-menu" aria-hidden="true">
+      <div class="mega-panel">
+        <div class="mega-left">
+          <div class="mega-left-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          </div>
+          <div class="mega-left-title">Consultancy</div>
+          <p class="mega-left-desc">Expert guidance to solve complex challenges and accelerate growth.</p>
+          <div class="mega-left-illust">
+            <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="100" cy="60" r="40" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.2"/>
+              <circle cx="100" cy="60" r="28" fill="#dbeafe" stroke="#bfdbfe" stroke-width="1"/>
+              <circle cx="100" cy="60" r="16" fill="#fff" stroke="#93c5fd" stroke-width="1"/>
+              <path d="M92 60 L100 50 L108 60" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <line x1="100" y1="50" x2="100" y2="72" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="40" cy="40" r="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="0.8"/>
+              <circle cx="160" cy="40" r="8" fill="#dbeafe" stroke="#93c5fd" stroke-width="0.8"/>
+              <circle cx="40" cy="80" r="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="0.8"/>
+              <circle cx="160" cy="80" r="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="0.8"/>
+              <line x1="48" y1="40" x2="72" y2="52" stroke="#93c5fd" stroke-width="1" stroke-dasharray="3 3"/>
+              <line x1="152" y1="40" x2="128" y2="52" stroke="#93c5fd" stroke-width="1" stroke-dasharray="3 3"/>
+              <path d="M70 95 Q100 80 130 95" stroke="#60a5fa" stroke-width="1.5" fill="none" opacity="0.5"/>
             </svg>
           </div>
-
-          <!-- Service columns + bottom CTA -->
-          <div class="flex flex-col p-6">
-            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              <!-- Strategy & Planning -->
-              <div>
-                <div class="flex items-center gap-3">
-                  <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-brand">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
-                    </svg>
-                  </div>
-                  <h3 class="mega-col-title text-sm font-bold text-slate-900">Strategy & Planning</h3>
-                </div>
-                <span class="mt-3 block h-0.5 w-8 rounded-full bg-brand"></span>
-                <ul class="mt-4 space-y-2">
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Business Strategy</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Market Research & Analysis</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Growth Strategy</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Roadmap Development</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Competitive Analysis</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Change Management</a></li>
-                </ul>
-              </div>
-
-              <!-- Digital Transformation -->
-              <div>
-                <div class="flex items-center gap-3">
-                  <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-brand">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-7"/><path d="M18 5h3v3"/>
-                    </svg>
-                  </div>
-                  <h3 class="mega-col-title text-sm font-bold text-slate-900">Digital Transformation</h3>
-                </div>
-                <span class="mt-3 block h-0.5 w-8 rounded-full bg-brand"></span>
-                <ul class="mt-4 space-y-2">
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Digital Transformation Strategy</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Business Automation</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Process Digitization</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Technology Integration</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Data & Analytics Strategy</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Innovation Consulting</a></li>
-                </ul>
-              </div>
-
-              <!-- Operations & Advisory -->
-              <div>
-                <div class="flex items-center gap-3">
-                  <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-brand">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-                    </svg>
-                  </div>
-                  <h3 class="mega-col-title text-sm font-bold text-slate-900">Operations & Advisory</h3>
-                </div>
-                <span class="mt-3 block h-0.5 w-8 rounded-full bg-brand"></span>
-                <ul class="mt-4 space-y-2">
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Process Optimization</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Performance Improvement</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Supply Chain Consulting</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Cost Optimization</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Risk Management</a></li>
-                  <li><a href="#contact" class="mega-link flex items-center gap-2 text-sm font-medium text-slate-700"><svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Operational Excellence</a></li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Bottom CTA -->
-            <div class="mt-5 flex flex-col gap-4 rounded-2xl border border-sky-100 bg-sky-50 p-4 sm:flex-row sm:items-center sm:justify-between">
-              <div class="flex items-center gap-4">
-                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand text-white shadow-lg shadow-brand/30">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="2" y="14" width="5" height="7" rx="2"/><rect x="17" y="14" width="5" height="7" rx="2"/><path d="M21 21v1a2 2 0 0 1-2 2h-4"/>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-sm font-bold text-slate-900">Need a custom consulting solution?</p>
-                  <p class="mt-0.5 max-w-[300px] text-xs leading-snug text-slate-500">Let's discuss how we can help your business achieve sustainable growth and lasting impact.</p>
-                </div>
-              </div>
-              <a href="#contact" class="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full border-2 border-brand px-4 py-2 text-sm font-semibold text-brand transition-all duration-300 hover:bg-brand hover:text-white sm:w-auto">
-                View All Consultancy Services
-                <svg class="arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </a>
-            </div>
+        </div>
+        <div class="mega-right">
+          <div class="mega-links-grid">
+            <a href="#contact" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
+              <span class="mega-link-text">IT Strategy Consulting</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></span>
+              <span class="mega-link-text">Cloud Consulting</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg></span>
+              <span class="mega-link-text">Data & AI Consulting</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+              <span class="mega-link-text">Security Consulting</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span>
+              <span class="mega-link-text">Process Consulting</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-7"/></svg></span>
+              <span class="mega-link-text">Technology Advisory</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
           </div>
-
-          <!-- Why choose IKfTech panel -->
-          <div class="flex flex-col overflow-hidden border-t border-slate-100 bg-sky-50/60 p-6 lg:rounded-br-3xl lg:rounded-tr-3xl lg:border-l lg:border-t-0">
-            <span class="text-[11px] font-bold uppercase tracking-[0.28em] text-brand">Why Choose IKfTech?</span>
-            <ul class="mt-3 flex-1 space-y-2.5">
-              <li class="flex gap-3 border-b border-slate-100 pb-4 last:border-0">
-                <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-[13px] font-bold text-slate-900">Expert Consultants</p>
-                  <p class="mt-0.5 text-xs leading-snug text-slate-500">Industry experts with deep experience and proven results.</p>
-                </div>
-              </li>
-              <li class="flex gap-3 border-b border-slate-100 pb-2.5 last:border-0">
-                <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-7"/>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-[13px] font-bold text-slate-900">Data-Driven Insights</p>
-                  <p class="mt-0.5 text-xs leading-snug text-slate-500">We use data and analytics to drive smarter business decisions.</p>
-                </div>
-              </li>
-              <li class="flex gap-3 border-b border-slate-100 pb-2.5 last:border-0">
-                <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-[13px] font-bold text-slate-900">Customized Solutions</p>
-                  <p class="mt-0.5 text-xs leading-snug text-slate-500">Tailored strategies designed around your unique needs.</p>
-                </div>
-              </li>
-              <li class="flex gap-3 last:border-0">
-                <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="m23 6-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-[13px] font-bold text-slate-900">Measurable Impact</p>
-                  <p class="mt-0.5 text-xs leading-snug text-slate-500">We focus on outcomes that create real, measurable business value.</p>
-                </div>
-              </li>
-            </ul>
-          </div>
+          <a href="#contact" class="mega-view-all">View All Consultancy <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
@@ -1010,181 +894,69 @@
       </div>
     </div>
 
-    <!-- ===== COMPANY MEGA MENU (interactive left-nav / right-preview) ===== -->
-    <div id="companyMenu" class="mega-menu absolute inset-x-0 top-full z-50 px-4 pb-8 pt-3" aria-hidden="true">
-      <!-- Subtle blue glow waves around the edges (placed outside the inner card wrapper to allow overflow) -->
-      <div class="pointer-events-none absolute inset-0 mx-auto max-w-6xl px-4" aria-hidden="true">
-        <div class="absolute -left-20 top-6 h-64 w-64 rounded-full bg-sky-200/40 blur-3xl"></div>
-        <div class="absolute -right-16 -bottom-8 h-64 w-64 rounded-full bg-brand/10 blur-3xl"></div>
-      </div>
-
-      <div class="relative mx-auto max-h-[calc(100vh-88px)] w-full max-w-6xl overflow-hidden overflow-y-auto rounded-3xl border-2 border-brand bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35),0_0_30px_-5px_rgba(37,99,235,0.25)] lg:overflow-hidden">
-        <button type="button" class="mega-close absolute right-4 top-4 z-30 flex h-9 w-9 items-center justify-center rounded-full bg-white/95 text-slate-600 shadow-md ring-1 ring-slate-200 transition-all duration-300 hover:bg-slate-50 hover:text-brand active:scale-90" aria-label="Close menu">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
-        </button>
-
-        <div class="relative grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:min-h-[490px]">
-
-          <!-- LEFT: company sections -->
-          <div class="flex flex-col border-b border-slate-100 p-4 sm:p-6 lg:border-b-0 lg:border-r lg:p-10">
-            <div class="flex items-center gap-2.5">
-              <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-100 text-brand">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M15 9h4a2 2 0 0 1 2 2v10M9 7h2M9 11h2M9 15h2"/>
-                </svg>
-              </span>
-              <span class="text-[11px] font-bold uppercase tracking-[0.28em] text-slate-500">Company</span>
-            </div>
-            <div class="mt-5 h-px w-full bg-gradient-to-r from-sky-200 to-transparent"></div>
-
-            <ul class="mt-6 space-y-3">
-              <!-- AI-First Company (featured) -->
-              <li>
-                <button type="button" data-preview="ai" class="company-item group flex w-full items-start gap-4 rounded-2xl border border-sky-100 bg-sky-50/70 p-4 text-left">
-                  <span class="company-ico flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-brand">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="4"/>
-                    </svg>
-                  </span>
-                  <span class="flex-1">
-                    <span class="flex flex-wrap items-center gap-2 text-[15px] font-bold text-slate-900">
-                      AI-First Company
-                      <span class="rounded-full bg-brand px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">New</span>
-                    </span>
-                    <span class="mt-1 block text-[13px] leading-snug text-slate-500">Our approach to building intelligent, scalable solutions</span>
-                  </span>
-                </button>
-              </li>
-              <!-- About Us -->
-              <li>
-                <button type="button" data-preview="about" class="company-item group flex w-full items-start gap-4 rounded-2xl border border-transparent p-4 text-left">
-                  <span class="company-ico flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-brand">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                  </span>
-                  <span class="flex-1">
-                    <span class="block text-[15px] font-bold text-slate-900">About Us</span>
-                    <span class="mt-1 block text-[13px] leading-snug text-slate-500">Who we are, our mission, and how we make a difference</span>
-                  </span>
-                </button>
-              </li>
-              <!-- How We Work -->
-              <li>
-                <button type="button" data-preview="work" class="company-item group flex w-full items-start gap-4 rounded-2xl border border-transparent p-4 text-left">
-                  <span class="company-ico flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-brand">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <circle cx="5" cy="6" r="3"/><circle cx="19" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M7.5 7.5 10.5 15.5M16.5 7.5 13.5 15.5"/>
-                    </svg>
-                  </span>
-                  <span class="flex-1">
-                    <span class="block text-[15px] font-bold text-slate-900">How We Work</span>
-                    <span class="mt-1 block text-[13px] leading-snug text-slate-500">Our methodology for delivering reliable, future-proof technology</span>
-                  </span>
-                </button>
-              </li>
-              <!-- Careers -->
-              <li>
-                <button type="button" data-preview="careers" class="company-item group flex w-full items-start gap-4 rounded-2xl border border-transparent p-4 text-left">
-                  <span class="company-ico flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sky-100 text-brand">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-                    </svg>
-                  </span>
-                  <span class="flex-1">
-                    <span class="block text-[15px] font-bold text-slate-900">Careers</span>
-                    <span class="mt-1 block text-[13px] leading-snug text-slate-500">Join our growing team and explore opportunities across technology, design, and more</span>
-                  </span>
-                </button>
-              </li>
-            </ul>
+    <!-- ===== COMPANY MEGA MENU ===== -->
+    <div id="companyMenu" class="mega-menu" aria-hidden="true">
+      <div class="mega-panel">
+        <div class="mega-left">
+          <div class="mega-left-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M15 9h4a2 2 0 0 1 2 2v10M9 7h2M9 11h2M9 15h2"/></svg>
           </div>
-
-          <!-- RIGHT: interactive preview -->
-          <div class="relative grid min-h-[340px] overflow-hidden p-4 sm:p-6 lg:min-h-[490px] lg:p-10">
-            <div class="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-sky-50 via-white to-sky-50" aria-hidden="true"></div>
-            <div class="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full bg-brand/10 blur-3xl" aria-hidden="true"></div>
-            <div class="pointer-events-none absolute -bottom-14 -left-10 h-52 w-52 rounded-full bg-sky-200/60 blur-3xl" aria-hidden="true"></div>
-
-            <!-- Default preview -->
-            <div data-pane="default" class="company-preview active flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[280px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Abstract technology" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
-                <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>
-                  </svg>
-                </span>
-              </div>
-              <h4 class="mt-6 text-xl font-extrabold text-slate-900">Explore IKfTech</h4>
-              <p class="mt-2 max-w-xs text-sm leading-relaxed text-slate-500">Hover over a company section to discover more.</p>
-            </div>
-
-            <!-- AI-First preview -->
-            <div data-pane="ai" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[280px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="AI-First Innovation" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
-                <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>
-                  </svg>
-                </span>
-              </div>
-              <h4 class="mt-6 text-xl font-extrabold text-slate-900">AI-First Innovation</h4>
-              <p class="mt-2 max-w-xs text-sm leading-relaxed text-slate-500">Intelligent, scalable solutions with AI at the core of everything we build.</p>
-            </div>
-
-            <!-- About Us preview -->
-            <div data-pane="about" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[280px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Who We Are" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
-                <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>
-                  </svg>
-                </span>
-              </div>
-              <h4 class="mt-6 text-xl font-extrabold text-slate-900">Who We Are</h4>
-              <p class="mt-2 max-w-xs text-sm leading-relaxed text-slate-500">A team of engineers, designers, and strategists turning bold ideas into dependable software.</p>
-            </div>
-
-            <!-- How We Work preview -->
-            <div data-pane="work" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[280px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Our Process" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
-                <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>
-                  </svg>
-                </span>
-              </div>
-              <h4 class="mt-6 text-xl font-extrabold text-slate-900">Our Process</h4>
-              <p class="mt-2 max-w-xs text-sm leading-relaxed text-slate-500">A proven, transparent methodology that delivers reliable, future-proof technology.</p>
-            </div>
-
-            <!-- Careers preview -->
-            <div data-pane="careers" class="company-preview flex flex-col items-center justify-center text-center">
-              <div class="company-preview-graphic relative w-full max-w-[280px] overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-sky-100 shadow-lg shadow-brand/10">
-                <img src="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1200&amp;h=700&amp;fit=crop" alt="Build Your Future With Us" class="aspect-square w-full max-w-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                <div class="absolute inset-0 bg-gradient-to-t from-sky-950/40 via-transparent to-transparent"></div>
-                <span class="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-brand shadow-md">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>
-                  </svg>
-                </span>
-              </div>
-              <h4 class="mt-6 text-xl font-extrabold text-slate-900">Build Your Future With Us</h4>
-              <p class="mt-2 max-w-xs text-sm leading-relaxed text-slate-500">Explore roles across technology, design, and more — and grow with IKfTech.</p>
-            </div>
+          <div class="mega-left-title">Company</div>
+          <p class="mega-left-desc">Learn about our mission, values, and the people behind IKfTech.</p>
+          <div class="mega-left-illust">
+            <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="70" y="20" width="60" height="80" rx="6" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.2"/>
+              <rect x="82" y="32" width="36" height="10" rx="2" fill="#dbeafe" stroke="#bfdbfe" stroke-width="0.8"/>
+              <rect x="82" y="48" width="36" height="10" rx="2" fill="#dbeafe" stroke="#bfdbfe" stroke-width="0.8"/>
+              <rect x="82" y="64" width="36" height="10" rx="2" fill="#dbeafe" stroke="#bfdbfe" stroke-width="0.8"/>
+              <circle cx="100" cy="86" r="6" fill="#fff" stroke="#2563EB" stroke-width="1.5"/>
+              <path d="M97 86l2 2 4-4" stroke="#2563EB" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <circle cx="40" cy="50" r="10" fill="#dbeafe" stroke="#93c5fd" stroke-width="0.8"/>
+              <circle cx="160" cy="50" r="10" fill="#dbeafe" stroke="#93c5fd" stroke-width="0.8"/>
+              <path d="M50 50h-6" stroke="#93c5fd" stroke-width="1" stroke-dasharray="2 2"/>
+              <path d="M150 50h6" stroke="#93c5fd" stroke-width="1" stroke-dasharray="2 2"/>
+              <path d="M40 60v20" stroke="#93c5fd" stroke-width="1" stroke-dasharray="2 2"/>
+              <path d="M160 60v20" stroke="#93c5fd" stroke-width="1" stroke-dasharray="2 2"/>
+            </svg>
           </div>
+        </div>
+        <div class="mega-right">
+          <div class="mega-links-grid">
+            <a href="#about" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+              <span class="mega-link-text">About Us</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#about" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg></span>
+              <span class="mega-link-text">Our Team</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#about" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+              <span class="mega-link-text">Our Values</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#careers" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span>
+              <span class="mega-link-text">Careers</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#blog" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+              <span class="mega-link-text">News & Insights</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#contact" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+              <span class="mega-link-text">Contact Us</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          <a href="#about" class="mega-view-all">View Company <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
-
     <!-- Mobile: Company -->
     <div id="mobileCompanyMenu" class="mobile-mega" aria-hidden="true">
       <div class="mobile-mega-card">
@@ -1202,300 +974,69 @@
       </div>
     </div>
 
-    <!-- ===== RESOURCES MEGA MENU (editorial content hub) ===== -->
-    <div id="resourcesMenu" class="mega-menu absolute inset-x-0 top-full z-50 px-4 pb-8 pt-3" aria-hidden="true">
-      <div class="relative mx-auto max-h-[calc(100vh-88px)] w-full max-w-6xl overflow-hidden overflow-y-auto rounded-3xl border-2 border-brand bg-white shadow-[0_30px_80px_-20px_rgba(15,23,42,0.35),0_0_30px_-5px_rgba(37,99,235,0.35)] lg:overflow-visible">
-        <button type="button" class="mega-close absolute right-4 top-4 z-30 flex h-9 w-9 items-center justify-center rounded-full bg-white/95 text-slate-600 shadow-md ring-1 ring-slate-200 transition-all duration-300 hover:bg-slate-50 hover:text-brand active:scale-90" aria-label="Close menu">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
-        </button>
-        <div class="pointer-events-none absolute inset-0 overflow-hidden rounded-3xl" aria-hidden="true">
-          <div class="absolute -left-24 top-6 h-64 w-64 rounded-full bg-sky-200/40 blur-3xl"></div>
-          <div class="absolute -right-20 -bottom-16 h-64 w-64 rounded-full bg-brand/10 blur-3xl"></div>
+    <!-- ===== RESOURCES MEGA MENU ===== -->
+    <div id="resourcesMenu" class="mega-menu" aria-hidden="true">
+      <div class="mega-panel">
+        <div class="mega-left">
+          <div class="mega-left-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div class="mega-left-title">Resources</div>
+          <p class="mega-left-desc">Insights, guides, and knowledge to power your digital journey.</p>
+          <div class="mega-left-illust">
+            <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="50" y="15" width="40" height="90" rx="4" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.2"/>
+              <rect x="58" y="25" width="24" height="6" rx="2" fill="#dbeafe" stroke="#bfdbfe" stroke-width="0.8"/>
+              <rect x="58" y="36" width="24" height="3" rx="1" fill="#dbeafe" stroke="#bfdbfe" stroke-width="0.5"/>
+              <rect x="58" y="43" width="20" height="3" rx="1" fill="#dbeafe" stroke="#bfdbfe" stroke-width="0.5"/>
+              <rect x="58" y="50" width="24" height="3" rx="1" fill="#dbeafe" stroke="#bfdbfe" stroke-width="0.5"/>
+              <rect x="110" y="15" width="40" height="90" rx="4" fill="#dbeafe" stroke="#93c5fd" stroke-width="1.2"/>
+              <rect x="118" y="25" width="24" height="6" rx="2" fill="#fff" stroke="#bfdbfe" stroke-width="0.8"/>
+              <rect x="118" y="36" width="24" height="3" rx="1" fill="#fff" stroke="#bfdbfe" stroke-width="0.5"/>
+              <rect x="118" y="43" width="18" height="3" rx="1" fill="#fff" stroke="#bfdbfe" stroke-width="0.5"/>
+              <rect x="118" y="50" width="24" height="3" rx="1" fill="#fff" stroke="#bfdbfe" stroke-width="0.5"/>
+              <circle cx="100" cy="100" r="8" fill="#dbeafe" stroke="#2563EB" stroke-width="1.5"/>
+              <path d="M97 100h6M100 97v6" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
         </div>
-
-        <div class="relative grid lg:grid-cols-[minmax(0,5fr)_minmax(0,6.5fr)] lg:min-h-[490px]">
-
-          <!-- LEFT: explore resources -->
-          <div class="relative flex flex-col overflow-hidden border-b border-slate-100 p-4 lg:border-b-0 lg:border-r lg:p-6">
-            <div class="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand/10 blur-3xl" aria-hidden="true"></div>
-            <span class="text-[11px] font-bold uppercase tracking-[0.28em] text-brand">Explore Resources</span>
-            <p class="mt-1.5 max-w-sm text-[13px] leading-relaxed text-slate-500">Insights, guides, and knowledge to help you innovate, grow, and stay ahead in a digital world.</p>
-
-            <ul class="mt-2">
-              <!-- Insights & Articles -->
-              <li class="py-1">
-                <button type="button" class="resource-item active group flex w-full items-center gap-3 rounded-xl border border-sky-100 bg-sky-50/70 p-2 text-left">
-                  <span class="resource-ico flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M9 9H8"/>
-                    </svg>
-                  </span>
-                  <span class="flex-1">
-                    <span class="block text-sm font-bold text-slate-900">Insights &amp; Articles</span>
-                    <span class="mt-0.5 block text-xs leading-snug text-slate-500">Expert insights, industry trends, and in-depth articles.</span>
-                  </span>
-                  <svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                </button>
-              </li>
-              <!-- Guides & Ebooks -->
-              <li class="border-t border-slate-100 py-1">
-                <button type="button" class="resource-item group flex w-full items-center gap-3 rounded-xl border border-transparent p-2 text-left">
-                  <span class="resource-ico flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                    </svg>
-                  </span>
-                  <span class="flex-1">
-                    <span class="block text-sm font-bold text-slate-900">Guides &amp; Ebooks</span>
-                    <span class="mt-0.5 block text-xs leading-snug text-slate-500">Step-by-step guides and downloadable resources.</span>
-                  </span>
-                  <svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                </button>
-              </li>
-              <!-- Case Studies -->
-              <li class="border-t border-slate-100 py-1">
-                <button type="button" class="resource-item group flex w-full items-center gap-3 rounded-xl border border-transparent p-2 text-left">
-                  <span class="resource-ico flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M3 3v18h18"/><path d="M8 17v-5"/><path d="M13 17V8"/><path d="M18 17v-8"/>
-                    </svg>
-                  </span>
-                  <span class="flex-1">
-                    <span class="block text-sm font-bold text-slate-900">Case Studies</span>
-                    <span class="mt-0.5 block text-xs leading-snug text-slate-500">Real-world projects, solutions, and measurable results.</span>
-                  </span>
-                  <svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                </button>
-              </li>
-              <!-- Videos & Webinars -->
-              <li class="border-t border-slate-100 py-1">
-                <button type="button" class="resource-item group flex w-full items-center gap-3 rounded-xl border border-transparent p-2 text-left">
-                  <span class="resource-ico flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-brand">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m10 9 5 3-5 3z"/>
-                    </svg>
-                  </span>
-                  <span class="flex-1">
-                    <span class="block text-sm font-bold text-slate-900">Videos &amp; Webinars</span>
-                    <span class="mt-0.5 block text-xs leading-snug text-slate-500">Tutorials, webinars, and expert sessions on demand.</span>
-                  </span>
-                  <svg class="arrow h-3.5 w-3.5 shrink-0 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                </button>
-              </li>
-            </ul>
+        <div class="mega-right">
+          <div class="mega-links-grid">
+            <a href="#blog" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+              <span class="mega-link-text">Blog</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#blog" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
+              <span class="mega-link-text">Case Studies</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#blog" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+              <span class="mega-link-text">Whitepapers</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#blog" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></span>
+              <span class="mega-link-text">Guides & eBooks</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#blog" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></span>
+              <span class="mega-link-text">Webinars</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#faq" class="mega-link-item">
+              <span class="mega-link-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+              <span class="mega-link-text">FAQs</span>
+              <svg class="mega-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
           </div>
-
-          <!-- RIGHT: search + featured resource -->
-          <div class="relative flex flex-col p-4 lg:p-6">
-            <!-- Search bar -->
-            <div class="flex items-center gap-2 rounded-full border border-slate-200 bg-white p-1 pl-3 shadow-sm">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-slate-400" aria-hidden="true">
-                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-              </svg>
-              <input type="text" placeholder="Search resources, topics, or keywords..." class="w-full min-w-0 bg-transparent text-[13px] text-slate-700 outline-none placeholder:text-slate-400" aria-label="Search resources">
-              <button type="button" class="inline-flex shrink-0 items-center gap-1.5 rounded-full border-2 border-brand px-3 py-1.5 text-[13px] font-semibold text-brand transition-all duration-300 hover:bg-brand hover:text-white">
-                Browse All
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-
-            <!-- Featured resource card -->
-            <div id="featuredCarousel" class="relative mt-4 flex flex-1 flex-col overflow-hidden rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-50 via-white to-sky-50 p-4 shadow-lg shadow-brand/10 sm:p-5">
-              <div class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand/10 blur-3xl" aria-hidden="true"></div>
-              <div class="pointer-events-none absolute -bottom-14 -left-10 h-44 w-44 rounded-full bg-sky-200/60 blur-3xl" aria-hidden="true"></div>
-
-              <!-- carousel slides -->
-              <div class="relative flex min-h-[360px] flex-1 sm:min-h-[170px]">
-                <!-- SLIDE 1: AI -->
-                <div class="featured-slide active" data-slide="0">
-                  <div class="flex h-full w-full flex-col items-center justify-center gap-6 sm:flex-row">
-                    <div class="flex-1 text-center sm:text-left">
-                      <span class="inline-flex items-center gap-1.5 rounded-full bg-brand px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">Featured</span>
-                      <h4 class="mt-3 text-lg font-extrabold leading-snug text-slate-900">The Future of AI in Business</h4>
-                      <p class="mt-1.5 text-[13px] leading-relaxed text-slate-500">Explore how AI is transforming industries, optimizing operations, and creating new opportunities for growth.</p>
-                      <a href="#resources" class="btn-cta mt-4 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold text-white">
-                        Read Article
-                        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                      </a>
-                    </div>
-
-                    <!-- 3D / isometric AI illustration (SVG, no photo) -->
-                    <svg class="h-32 w-32 shrink-0 sm:h-40 sm:w-40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <defs>
-                        <linearGradient id="chipTop" x1="0" y1="0" x2="1" y2="1">
-                          <stop offset="0%" stop-color="#DBEAFE"/>
-                          <stop offset="100%" stop-color="#93C5FD"/>
-                        </linearGradient>
-                        <linearGradient id="chipSide" x1="0" y1="0" x2="1" y2="1">
-                          <stop offset="0%" stop-color="#60A5FA"/>
-                          <stop offset="100%" stop-color="#2563EB"/>
-                        </linearGradient>
-                      </defs>
-
-                      <!-- soft glow -->
-                      <circle cx="100" cy="110" r="60" fill="#2563EB" opacity="0.12"/>
-                      <circle cx="100" cy="110" r="44" fill="#3B82F6" opacity="0.10"/>
-
-                      <!-- connections -->
-                      <g stroke="#60A5FA" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.7" stroke-linecap="round">
-                        <path d="M78 92 40 64"/>
-                        <path d="M122 92 160 64"/>
-                        <path d="M78 130 44 150"/>
-                        <path d="M122 130 158 152"/>
-                        <path d="M100 80 100 40"/>
-                      </g>
-
-                      <!-- data nodes -->
-                      <g fill="#3B82F6">
-                        <circle cx="40" cy="64" r="5"/>
-                        <circle cx="160" cy="64" r="5"/>
-                        <circle cx="44" cy="150" r="5"/>
-                        <circle cx="158" cy="152" r="5"/>
-                        <circle cx="100" cy="40" r="5"/>
-                      </g>
-
-                      <!-- isometric AI chip -->
-                      <g>
-                        <polygon points="100,74 126,87 100,100 74,87" fill="url(#chipTop)"/>
-                        <polygon points="74,87 100,100 100,140 74,127" fill="#93C5FD"/>
-                        <polygon points="126,87 100,100 100,140 126,127" fill="url(#chipSide)"/>
-                        <g stroke="#FFFFFF" stroke-width="1.5" opacity="0.9" stroke-linecap="round">
-                          <path d="M100 81v8M96 84h8"/>
-                        </g>
-                      </g>
-
-                      <!-- mini analytics bars -->
-                      <g>
-                        <rect x="28" y="120" width="6" height="16" rx="1.5" fill="#93C5FD"/>
-                        <rect x="37" y="112" width="6" height="24" rx="1.5" fill="#60A5FA"/>
-                        <rect x="46" y="116" width="6" height="20" rx="1.5" fill="#2563EB"/>
-                      </g>
-
-                      <!-- small people icons -->
-                      <g stroke="#60A5FA" stroke-width="2" fill="none" stroke-linecap="round">
-                        <circle cx="166" cy="116" r="5"/>
-                        <path d="M161 128a5 5 0 0 1 10 0"/>
-                        <circle cx="176" cy="146" r="5"/>
-                        <path d="M171 158a5 5 0 0 1 10 0"/>
-                      </g>
-                    </svg>
-                  </div>
-                </div>
-
-                <!-- SLIDE 2: Cloud -->
-                <div class="featured-slide" data-slide="1">
-                  <div class="flex h-full w-full flex-col items-center justify-center gap-6 sm:flex-row">
-                    <div class="flex-1 text-center sm:text-left">
-                      <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-brand">Trending</span>
-                      <h4 class="mt-3 text-lg font-extrabold leading-snug text-slate-900">Scaling for the Cloud</h4>
-                      <p class="mt-1.5 text-[13px] leading-relaxed text-slate-500">Best practices for building secure, cost-effective, and highly scalable cloud infrastructure.</p>
-                      <a href="#resources" class="btn-cta mt-4 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold text-white">
-                        Read Article
-                        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                      </a>
-                    </div>
-
-                    <svg class="h-32 w-32 shrink-0 sm:h-40 sm:w-40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <defs>
-                        <linearGradient id="cldTop" x1="0" y1="0" x2="1" y2="1">
-                          <stop offset="0%" stop-color="#DBEAFE"/>
-                          <stop offset="100%" stop-color="#93C5FD"/>
-                        </linearGradient>
-                      </defs>
-                      <circle cx="100" cy="104" r="60" fill="#2563EB" opacity="0.12"/>
-                      <circle cx="100" cy="104" r="44" fill="#3B82F6" opacity="0.10"/>
-                      <path d="M64 120a16 16 0 0 1 2-32 22 22 0 0 1 41-10 17 17 0 0 1 33 11 13 13 0 0 1 1 31z" fill="url(#cldTop)" stroke="#93C5FD" stroke-width="2" stroke-linejoin="round"/>
-                      <g stroke="#60A5FA" stroke-width="2" stroke-linecap="round">
-                        <path d="M40 62h28M40 62l9-10M40 62l9 10"/>
-                        <path d="M160 62h-28M160 62l-9-10M160 62l-9 10"/>
-                      </g>
-                      <g fill="#3B82F6">
-                        <circle cx="42" cy="60" r="6"/>
-                        <circle cx="158" cy="60" r="6"/>
-                      </g>
-                      <rect x="72" y="148" width="12" height="22" rx="3" fill="#93C5FD"/>
-                      <rect x="94" y="138" width="12" height="32" rx="3" fill="#60A5FA"/>
-                      <rect x="116" y="144" width="12" height="26" rx="3" fill="#2563EB"/>
-                    </svg>
-                  </div>
-                </div>
-
-                <!-- SLIDE 3: Security -->
-                <div class="featured-slide" data-slide="2">
-                  <div class="flex h-full w-full flex-col items-center justify-center gap-6 sm:flex-row">
-                    <div class="flex-1 text-center sm:text-left">
-                      <span class="inline-flex items-center gap-1.5 rounded-full bg-sky-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-brand">Guide</span>
-                      <h4 class="mt-3 text-lg font-extrabold leading-snug text-slate-900">Cybersecurity Essentials</h4>
-                      <p class="mt-1.5 text-[13px] leading-relaxed text-slate-500">A practical playbook to protect your business data and build trust with every customer.</p>
-                      <a href="#resources" class="btn-cta mt-4 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold text-white">
-                        Read Article
-                        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                      </a>
-                    </div>
-
-                    <svg class="h-32 w-32 shrink-0 sm:h-40 sm:w-40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                      <defs>
-                        <linearGradient id="shldGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stop-color="#DBEAFE"/>
-                          <stop offset="100%" stop-color="#93C5FD"/>
-                        </linearGradient>
-                      </defs>
-                      <circle cx="100" cy="104" r="60" fill="#2563EB" opacity="0.12"/>
-                      <circle cx="100" cy="104" r="44" fill="#3B82F6" opacity="0.10"/>
-                      <path d="M100 56 134 69v32c0 22-15 35-34 43-19-8-34-21-34-43V69z" fill="url(#shldGrad)" stroke="#60A5FA" stroke-width="2" stroke-linejoin="round"/>
-                      <rect x="87" y="94" width="26" height="20" rx="4" fill="#2563EB"/>
-                      <path d="M92 94v-6a8 8 0 0 1 16 0v6" stroke="#2563EB" stroke-width="3" fill="none" stroke-linecap="round"/>
-                      <circle cx="100" cy="104" r="3" fill="#fff"/>
-                      <g stroke="#60A5FA" stroke-width="2" stroke-dasharray="5 5" opacity="0.7">
-                        <path d="M48 66l32 20"/>
-                        <path d="M152 66l-32 20"/>
-                        <path d="M48 150l32-22"/>
-                        <path d="M152 150l-32-22"/>
-                      </g>
-                      <g fill="#3B82F6">
-                        <circle cx="42" cy="62" r="6"/>
-                        <circle cx="158" cy="62" r="6"/>
-                        <circle cx="42" cy="154" r="6"/>
-                        <circle cx="158" cy="154" r="6"/>
-                      </g>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              <!-- carousel dots -->
-              <div class="relative mt-3 flex items-center justify-center gap-2" role="tablist" aria-label="Featured resources">
-                <button type="button" class="featured-dot active" data-slide="0" aria-label="Slide 1"></button>
-                <button type="button" class="featured-dot" data-slide="1" aria-label="Slide 2"></button>
-                <button type="button" class="featured-dot" data-slide="2" aria-label="Slide 3"></button>
-              </div>
-            </div>
-          </div>
-
-          <!-- BOTTOM CTA (spans both columns) -->
-          <div class="relative border-t border-slate-100 p-3 lg:col-span-2">
-            <div class="flex flex-col gap-3 rounded-2xl border border-sky-100 bg-sky-50 p-3 sm:flex-row sm:items-center sm:justify-between">
-              <div class="flex items-center gap-3">
-                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand text-white shadow-lg shadow-brand/30">
-                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><circle cx="11.5" cy="15.5" r="2.5"/><path d="M14.2 17.2 16 19"/>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-sm font-bold text-slate-900">Looking for something specific?</p>
-                  <p class="mt-0.5 text-[13px] leading-snug text-slate-500">Use our full resource library to find exactly what you need.</p>
-                </div>
-              </div>
-              <a href="#resources" class="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-full border-2 border-brand px-4 py-1.5 text-[13px] font-semibold text-brand transition-all duration-300 hover:bg-brand hover:text-white sm:w-auto">
-                Explore All Resources
-                <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </a>
-            </div>
-          </div>
+          <a href="#blog" class="mega-view-all">View All Resources <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
       </div>
     </div>
-
     <!-- Mobile: Resources -->
     <div id="mobileResourcesMenu" class="mobile-mega" aria-hidden="true">
       <div class="mobile-mega-card">

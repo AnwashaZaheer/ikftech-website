@@ -148,12 +148,10 @@ serviceCards.forEach((card) => {
 });
 
 // ===== Mega menus =====
-const companyMenu = document.getElementById('companyMenu');
-
 const megaMenus = [
   { btn: document.getElementById('servicesBtn'), menu: document.getElementById('megaMenu'), mobileMenu: document.getElementById('mobileServicesMenu') },
   { btn: document.getElementById('consultancyBtn'), menu: document.getElementById('consultancyMenu'), mobileMenu: document.getElementById('mobileConsultancyMenu') },
-  { btn: document.getElementById('companyBtn'), menu: companyMenu, mobileMenu: document.getElementById('mobileCompanyMenu') },
+  { btn: document.getElementById('companyBtn'), menu: document.getElementById('companyMenu'), mobileMenu: document.getElementById('mobileCompanyMenu') },
   { btn: document.getElementById('resourcesBtn'), menu: document.getElementById('resourcesMenu'), mobileMenu: document.getElementById('mobileResourcesMenu') },
 ].filter((m) => m.btn && m.menu);
 
@@ -166,12 +164,6 @@ const setMegaMenu = (target, open) => {
     menu.setAttribute('aria-hidden', String(!(isTarget && open)));
     if (mobileMenu) mobileMenu.setAttribute('aria-hidden', String(!(isTarget && open)));
   });
-  if (!open && target === companyMenu && companyMenu) {
-    companyMenu.querySelectorAll('.company-preview').forEach((pane) => {
-      pane.classList.toggle('active', pane.dataset.pane === 'default');
-    });
-    companyMenu.querySelectorAll('.company-item').forEach((item) => item.classList.remove('active'));
-  }
   if (open && !nav.classList.contains('-translate-y-[130%]')) {
     nav.classList.add('-translate-y-[130%]');
     toggle.setAttribute('aria-expanded', 'false');
@@ -223,63 +215,6 @@ if (megaMenus.length) {
     if (!insideMenu) closeAllMegaMenus();
   });
 
-  // Close buttons at the top of each mega menu card
-  document.querySelectorAll('.mega-close').forEach((btn) => {
-    btn.addEventListener('click', closeAllMegaMenus);
-  });
-
-  // ===== Company mega menu: interactive left-nav / right-preview =====
-  if (companyMenu) {
-    const companyItems = companyMenu.querySelectorAll('.company-item');
-    const previewPanes = companyMenu.querySelectorAll('.company-preview');
-
-    const setCompanyPreview = (id) => {
-      previewPanes.forEach((pane) => pane.classList.toggle('active', pane.dataset.pane === id));
-      companyItems.forEach((item) => item.classList.toggle('active', item.dataset.preview === id));
-    };
-
-    companyItems.forEach((item) => {
-      item.addEventListener('mouseenter', () => setCompanyPreview(item.dataset.preview));
-      item.addEventListener('focus', () => setCompanyPreview(item.dataset.preview));
-      item.addEventListener('click', () => setCompanyPreview(item.dataset.preview));
-    });
-
-    companyMenu.addEventListener('mouseleave', () => setCompanyPreview('default'));
-  }
-}
-
-// ===== Resources mega menu: featured carousel (auto-scroll) =====
-const featuredCarousel = document.getElementById('featuredCarousel');
-if (featuredCarousel) {
-  const slides = featuredCarousel.querySelectorAll('.featured-slide');
-  const dots = featuredCarousel.querySelectorAll('.featured-dot');
-  const INTERVAL = 2000;
-  let current = 0;
-  let timer;
-
-  const show = (index) => {
-    current = (index + slides.length) % slides.length;
-    slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
-  };
-
-  const start = () => {
-    clearInterval(timer);
-    timer = setInterval(() => show(current + 1), INTERVAL);
-  };
-  const stop = () => clearInterval(timer);
-
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
-      show(i);
-      start();
-    });
-  });
-
-  featuredCarousel.addEventListener('mouseenter', stop);
-  featuredCarousel.addEventListener('mouseleave', start);
-
-  start();
 }
 
 // ===== Mobile mega menu: close on link tap =====
