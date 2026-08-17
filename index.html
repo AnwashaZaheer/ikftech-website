@@ -80,6 +80,12 @@
     .header-hidden { transform: translateY(-100%); }
     header { transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
 
+    /* ---- Hamburger → X animation ---- */
+    #navToggle span { transition: transform .3s ease, opacity .3s ease; }
+    #navToggle.is-open span:first-child { transform: translateY(7px) rotate(45deg); }
+    #navToggle.is-open span:nth-child(2) { opacity: 0; }
+    #navToggle.is-open span:last-child { transform: translateY(-7px) rotate(-45deg); }
+
     /* ---- Mega menu (Services dropdown) visibility + open/close animation ---- */
     .mega-menu {
       opacity: 0;

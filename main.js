@@ -7,10 +7,12 @@ toggle.addEventListener('click', () => {
   if (isOpen) {
     nav.classList.remove('-translate-y-[130%]');
     toggle.setAttribute('aria-expanded', 'true');
-    closeAllMegaMenus(); // prevent both menus from being open at the same time
+    toggle.classList.add('is-open');
+    closeAllMegaMenus();
   } else {
     nav.classList.add('-translate-y-[130%]');
     toggle.setAttribute('aria-expanded', 'false');
+    toggle.classList.remove('is-open');
   }
 });
 
@@ -19,6 +21,7 @@ document.querySelectorAll('#mainNav a').forEach((link) => {
   link.addEventListener('click', () => {
     nav.classList.add('-translate-y-[130%]');
     toggle.setAttribute('aria-expanded', 'false');
+    toggle.classList.remove('is-open');
   });
 });
 
@@ -167,6 +170,7 @@ const setMegaMenu = (target, open) => {
   if (open && !nav.classList.contains('-translate-y-[130%]')) {
     nav.classList.add('-translate-y-[130%]');
     toggle.setAttribute('aria-expanded', 'false');
+    toggle.classList.remove('is-open');
   }
 
   // Prevent background page scroll on mobile while a mega menu is open
