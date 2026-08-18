@@ -664,7 +664,7 @@
     /* ===== NEW Our Team Section ===== */
     .team-section-new {
       position: relative;
-      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 35%, #f0f7ff 100%);
+      background: #ffffff;
       overflow: hidden;
       padding: 80px 20px;
       font-family: inherit;
@@ -673,9 +673,7 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background:
-        radial-gradient(ellipse at 80% 50%, rgba(37,99,235,0.05) 0%, transparent 50%),
-        radial-gradient(ellipse at 20% 80%, rgba(124,58,237,0.03) 0%, transparent 40%);
+      background: radial-gradient(ellipse at 80% 50%, rgba(37,99,235,0.04) 0%, transparent 50%);
       pointer-events: none;
     }
     .team-section-new::after {
@@ -780,7 +778,7 @@
       }
     }
     .team-title-new span {
-      background: linear-gradient(135deg, #2563EB 0%, #7c3aed 100%);
+      background: linear-gradient(135deg, #2563EB 0%, #1d4ed8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -791,7 +789,7 @@
       position: absolute;
       bottom: -2px; left: 0;
       width: 0; height: 2px;
-      background: linear-gradient(90deg, #2563EB, #7c3aed);
+      background: linear-gradient(90deg, #2563EB, #1d4ed8);
       border-radius: 2px;
       animation: underlineGrow 0.6s ease forwards;
       animation-delay: 1.2s;
@@ -817,7 +815,7 @@
       position: relative;
       padding-left: 20px;
       border-left: 2px solid transparent;
-      border-image: linear-gradient(180deg, #2563EB, rgba(124,58,237,0.3)) 1;
+      border-image: linear-gradient(180deg, #2563EB, rgba(37,99,235,0.3)) 1;
     }
     @keyframes descReveal {
       0% { opacity: 0; transform: translateY(16px); filter: blur(4px); }
@@ -884,7 +882,7 @@
       font-weight: 800;
       color: #0F172A;
       line-height: 1;
-      background: linear-gradient(135deg, #2563EB, #7c3aed);
+      background: linear-gradient(135deg, #2563EB, #1d4ed8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -921,7 +919,7 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, rgba(124,58,237,0.04) 40%, rgba(255,255,255,0) 70%);
+      background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, rgba(37,99,235,0.04) 40%, rgba(255,255,255,0) 70%);
       border-radius: 50%;
       pointer-events: none;
       z-index: 0;
@@ -963,7 +961,7 @@
       position: absolute;
       inset: -3px;
       clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-      background: linear-gradient(135deg, #93c5fd 0%, #2563eb 50%, #7c3aed 100%);
+      background: linear-gradient(135deg, #93c5fd 0%, #2563eb 50%, #1d4ed8 100%);
       opacity: 0;
       transition: opacity 0.4s ease;
     }
@@ -1011,7 +1009,7 @@
       filter: drop-shadow(0 0 20px rgba(37, 99, 235, 0.3));
     }
     .hex-center {
-      background: linear-gradient(145deg, #2563EB 0%, #1d4ed8 50%, #7c3aed 100%);
+      background: linear-gradient(145deg, #2563EB 0%, #1d4ed8 100%);
       color: #ffffff;
       flex-direction: column;
       box-shadow: inset 0 2px 8px rgba(255,255,255,0.15);
@@ -1045,62 +1043,6 @@
     .hex-pos-4 { left: 180px; top: 340px; }      
     .hex-pos-5 { left: 52px; top: 260px; }        
     .hex-pos-6 { left: 52px; top: 110px; }
-
-    /* Floating decorative particles */
-    .hex-particle {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-      animation: particleFloat linear infinite;
-    }
-    .hex-particle-1 {
-      width: 10px; height: 10px;
-      background: #93c5fd;
-      top: 60px; left: 30px;
-      animation-duration: 6s;
-      box-shadow: 0 0 8px rgba(147,197,253,0.5);
-    }
-    .hex-particle-2 {
-      width: 12px; height: 12px;
-      background: #bfdbfe;
-      top: 160px; right: 20px;
-      animation-duration: 8s;
-      animation-delay: -2s;
-      box-shadow: 0 0 10px rgba(191,219,254,0.5);
-    }
-    .hex-particle-3 {
-      width: 8px; height: 8px;
-      background: #2563eb;
-      bottom: 80px; left: 60px;
-      animation-duration: 7s;
-      animation-delay: -4s;
-      box-shadow: 0 0 8px rgba(37,99,235,0.5);
-    }
-    .hex-particle-4 {
-      width: 10px; height: 10px;
-      background: #93c5fd;
-      top: 40px; right: 60px;
-      animation-duration: 9s;
-      animation-delay: -1s;
-      box-shadow: 0 0 8px rgba(147,197,253,0.5);
-    }
-    .hex-particle-5 {
-      width: 8px; height: 8px;
-      background: #7c3aed;
-      bottom: 40px; right: 80px;
-      animation-duration: 7.5s;
-      animation-delay: -3s;
-      opacity: 0.6;
-      box-shadow: 0 0 10px rgba(124,58,237,0.4);
-    }
-    @keyframes particleFloat {
-      0% { transform: translateY(0) translateX(0); opacity: 0.4; }
-      25% { transform: translateY(-12px) translateX(6px); opacity: 0.8; }
-      50% { transform: translateY(-4px) translateX(-4px); opacity: 0.5; }
-      75% { transform: translateY(-16px) translateX(8px); opacity: 0.9; }
-      100% { transform: translateY(0) translateX(0); opacity: 0.4; }
-    }
 
     /* --- Portrait hexagons --- */
     .team-portrait {
