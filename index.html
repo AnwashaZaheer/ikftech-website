@@ -121,7 +121,8 @@
       .mobile-mega {
         display: block;
         position: absolute;
-        inset-x: 0;
+        left: 0;
+        right: 0;
         top: 100%;
         z-index: 50;
         background: white;
@@ -774,14 +775,14 @@
     /* Hexagon layout */
     .hex-wrapper {
       position: relative;
-      width: 400px;
-      height: 400px;
+      width: 520px;
+      height: 520px;
     }
 
     .hex-bg-glow {
       position: absolute;
-      width: 320px;
-      height: 320px;
+      width: 420px;
+      height: 420px;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
@@ -797,9 +798,9 @@
       z-index: 0;
       opacity: 0.6;
     }
-    .hex-line-1 { left: 44px; top: 144px; width: 312px; height: 1px; }
-    .hex-line-2 { left: 44px; top: 256px; width: 312px; height: 1px; }
-    .hex-line-3 { left: 200px; top: 36px; width: 1px; height: 328px; }
+    .hex-line-1 { left: 52px; top: 190px; width: 416px; height: 1px; }
+    .hex-line-2 { left: 52px; top: 330px; width: 416px; height: 1px; }
+    .hex-line-3 { left: 260px; top: 36px; width: 1px; height: 448px; }
 
     .hex-bg-dot {
       position: absolute;
@@ -810,28 +811,40 @@
       z-index: 1;
       transform: translate(-50%, -50%);
     }
-    .hex-dot-1 { left: 44px; top: 144px; }
-    .hex-dot-2 { left: 356px; top: 144px; }
-    .hex-dot-3 { left: 44px; top: 256px; }
-    .hex-dot-4 { left: 356px; top: 256px; }
-    .hex-dot-5 { left: 200px; top: 36px; }
-    .hex-dot-6 { left: 200px; top: 364px; }
+    .hex-dot-1 { left: 52px; top: 190px; }
+    .hex-dot-2 { left: 468px; top: 190px; }
+    .hex-dot-3 { left: 52px; top: 330px; }
+    .hex-dot-4 { left: 468px; top: 330px; }
+    .hex-dot-5 { left: 260px; top: 36px; }
+    .hex-dot-6 { left: 260px; top: 484px; }
 
     @media (max-width: 767px) {
-      .hex-wrapper { transform: scale(0.85); }
+      .hex-wrapper { transform: scale(0.75); }
     }
     @media (max-width: 480px) {
-      .hex-wrapper { transform: scale(0.7); }
+      .hex-wrapper { transform: scale(0.6); }
     }
 
     .hex-wrapper-item {
       position: absolute;
-      width: 120px;
-      height: 104px;
+      width: 160px;
+      height: 140px;
       filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.06));
       transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
       z-index: 2;
       cursor: pointer;
+    }
+    .hex-wrapper-item::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+      background: #2563eb;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .hex-wrapper-item:hover::before {
+      opacity: 1;
     }
     .hex-wrapper-item:hover {
       transform: scale(1.08);
@@ -847,19 +860,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .hex-item img {
-      width: 250%;
-      height: 250%;
-      object-fit: cover;
-      object-position: center center;
-      display: block;
-      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-      transition: transform 0.4s ease;
-      margin: -75% 0 0 -75%;
-    }
-    .hex-wrapper-item:hover img {
-      transform: scale(1.05);
+      position: relative;
+      z-index: 1;
     }
 
     .hex-center-wrapper {
@@ -883,13 +885,13 @@
       pointer-events: none;
     }
     .hex-center-number {
-      font-size: 26px;
+      font-size: 32px;
       font-weight: 800;
       line-height: 1;
       margin-top: 4px;
     }
     .hex-center-label {
-      font-size: 9px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.15em;
       margin-top: 4px;
@@ -897,13 +899,13 @@
     }
 
     /* Positions */
-    .hex-pos-center { left: 140px; top: 148px; }
-    .hex-pos-1 { left: 140px; top: 36px; }       
-    .hex-pos-2 { left: 236px; top: 92px; }       
-    .hex-pos-3 { left: 236px; top: 204px; }      
-    .hex-pos-4 { left: 140px; top: 260px; }      
-    .hex-pos-5 { left: 44px; top: 204px; }       
-    .hex-pos-6 { left: 44px; top: 92px; }        
+    .hex-pos-center { left: 180px; top: 190px; }
+    .hex-pos-1 { left: 180px; top: 30px; }       
+    .hex-pos-2 { left: 308px; top: 110px; }       
+    .hex-pos-3 { left: 308px; top: 260px; }      
+    .hex-pos-4 { left: 180px; top: 340px; }      
+    .hex-pos-5 { left: 52px; top: 260px; }        
+    .hex-pos-6 { left: 52px; top: 110px; }
 
     /* --- Portrait hexagons --- */
     .team-portrait {
@@ -1884,17 +1886,14 @@
             <!-- Portraits -->
             <div class="hex-wrapper-item hex-pos-1">
               <div class="hex-item">
-                <img src="https://images.pexels.com/photos/25002550/pexels-photo-25002550.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=face" alt="Team Member">
               </div>
             </div>
             <div class="hex-wrapper-item hex-pos-2">
               <div class="hex-item">
-                <img src="https://images.pexels.com/photos/6337528/pexels-photo-6337528.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=face" alt="Team Member">
               </div>
             </div>
             <div class="hex-wrapper-item hex-pos-3">
               <div class="hex-item">
-                <img src="https://images.pexels.com/photos/7460707/pexels-photo-7460707.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=face" alt="Team Member">
               </div>
             </div>
             
@@ -1908,17 +1907,14 @@
 
             <div class="hex-wrapper-item hex-pos-4">
               <div class="hex-item">
-                <img src="https://images.pexels.com/photos/6314123/pexels-photo-6314123.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=face" alt="Team Member">
               </div>
             </div>
             <div class="hex-wrapper-item hex-pos-5">
               <div class="hex-item">
-                <img src="https://images.pexels.com/photos/6200098/pexels-photo-6200098.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=face" alt="Team Member">
               </div>
             </div>
             <div class="hex-wrapper-item hex-pos-6">
               <div class="hex-item">
-                <img src="https://images.pexels.com/photos/9253763/pexels-photo-9253763.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop&crop=face" alt="Team Member">
               </div>
             </div>
 
